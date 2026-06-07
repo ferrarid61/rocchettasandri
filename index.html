@@ -12,7 +12,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -27,7 +27,10 @@
     <img
       class="hero__bg"
       src="images/rocchetta_hero.jpg"
-      alt="Panorama storico di Rocchetta Sandri nell'Appennino modenese"
+      srcset="images/rocchetta_hero_small.jpg 640w, images/rocchetta_hero_medium.jpg 1024w, images/rocchetta_hero.jpg 1600w"
+      sizes="100vw"
+      alt="Panorama del borgo di Rocchetta Sandri tra i boschi dell'Appennino modenese"
+      fetchpriority="high"
     />
     <div class="hero__content">
       <span class="hero__badge">Appennino Modenese</span>
@@ -35,16 +38,16 @@
       <p class="hero__subtitle">Un borgo antico tra boschi e storia, sulle pendici del Monte Cimone</p>
       <a href="#about" class="btn btn--primary">Scopri il borgo</a>
     </div>
-    <div class="hero__scroll-hint">
+    <div class="hero__scroll-hint" aria-hidden="true">
       <span></span>
     </div>
   </header>
 
   <!-- ── NAVBAR ──────────────────────────────── -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
     <div class="navbar__inner">
       <a href="#top" class="navbar__logo">Rocchetta Sandri</a>
-      <ul class="navbar__links">
+      <ul class="navbar__links" id="nav-links">
         <li><a href="#about">Il borgo</a></li>
         <li><a href="#storia">Storia</a></li>
         <li><a href="#gallery">Galleria</a></li>
@@ -52,7 +55,7 @@
         <li><a href="#map">Mappa</a></li>
         <li><a href="#contact">Contatti</a></li>
       </ul>
-      <button class="navbar__hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
     </div>
   </nav>
 
@@ -89,7 +92,7 @@
           <div class="about-image reveal">
             <img
               src="images/oratorio.jpg"
-              alt="Oratorio di Rocchetta Sandri"
+              alt="L'oratorio di Rocchetta Sandri, piccolo edificio religioso in pietra locale"
               loading="lazy"
             />
           </div>
@@ -103,49 +106,61 @@
         <span class="section-badge reveal">Storia</span>
         <h2 class="section-title reveal">Secoli di Memoria</h2>
         <div class="timeline">
+
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-year">753 d.C.</span>
               <h3>Castrum Scoplano</h3>
-              <p>Il re longobardo Astolfo cita il Castrum Scoplano in un diploma reale. È la prima testimonianza scritta dell'insediamento che darà origine a Rocchetta Sandri.</p>
+              <p>Il re longobardo Astolfo cita il <em>Castrum Scoplano</em> in un diploma reale — lo stesso con cui donava all'Abbazia di Nonantola il Castrum Sextulae e i territori adiacenti. È la prima testimonianza scritta dell'insediamento che darà origine a Rocchetta Sandri.</p>
             </div>
           </div>
+
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <span class="timeline-year">Medioevo</span>
-              <h3>La Rocca di Controllo</h3>
-              <p>La piccola rocca militare svolge una funzione strategica per il controllo della vallata dello Scoltenna e dei transiti verso la Toscana.</p>
+              <span class="timeline-year">568 d.C. – Medioevo</span>
+              <h3>Presidio Longobardo</h3>
+              <p>Quando i Longobardi scendono in Italia, il <em>Castrum Scoplano</em> resiste insieme a Sestola fino al 728. La sua posizione panoramica sulla vallata dello Scoltenna lo rende un punto di controllo strategico fondamentale per i transiti verso la Toscana.</p>
             </div>
           </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1406</span>
+              <h3>Fine del Comune Indipendente</h3>
+              <p>Dopo le guerre tra Obizzo di Montegarullo e gli Estensi, il borgo viene annesso alla provincia del Frignano, perdendo la sua lunga storia di comune autonomo. Il nome <em>Sandri</em> viene aggiunto in onore della famiglia più importante del luogo.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1535</span>
+              <h3>La Distruzione e la Rinascita</h3>
+              <p>Il commissario ducale Zanelli fa spianare la rocca, diroccare alcune case e la chiesa, come ritorsione per la partecipazione degli abitanti al Sacco di Sestola ad opera dei Tanari. La rocca viene però ricostruita parzialmente, dando origine al nomignolo <em>Rocchetta</em> che sopravvive fino ad oggi.</p>
+            </div>
+          </div>
+
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-year">Età Moderna</span>
               <h3>Comunità Agricola</h3>
-              <p>Il borgo diventa un fiorente centro agricolo, noto per la produzione di latte e Parmigiano-Reggiano e per le tradizioni artigianali locali.</p>
+              <p>Il borgo diventa un fiorente centro agricolo, noto per la produzione di latte e Parmigiano-Reggiano e per le tradizioni artigianali locali. Dell'antica rocca non rimangono tracce visibili: il paese si sviluppa in vari gruppi di casolari senza un centro storico consolidato.</p>
             </div>
           </div>
+
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-year">Oggi</span>
               <h3>Turismo e Tradizioni</h3>
-              <p>Rocchetta Sandri è meta di escursionisti e amanti della natura. La Sagra di Santa Eurosia e le crescentine modenesi restano tradizioni vive.</p>
-<p>Il nome “Rocchetta” deriva probabilmente dall’antica presenza di un rocca, poi distrutta e di cui rimase, per l’appunto, una rocca piccola, la cosiddetta “rocchetta”.
-
-Anticamente la Rocca di Rocchetta Sandri era detta di Scoplano (o di Sclopano) e si parla di essa per la prima volta nel Diploma di Astolfo del 753 d.C.: si tratta dello stesso documento con il quale il re dei Longobardi donava all’Abbazia di Nonantola il Castrum Sextulae e i territori adiacenti.
-
-Inoltre, quando nel 568 d.C. scendevano in Italia i Longobardi, dopo una lunga serie di battaglie combattute anche presso il fiume Scoltenna, a presidio della strada che scendeva in Toscana rimanevano il Castrum Sextulae (Sestola) e il Castrum Scoplano (Rocchetta), che resistettero fino al 728. Quest’ultimo, in particolare, godeva di un’ottima posizione strategica che, grazie alla sua posizione, permetteva di controllare l’ampia vallata che si estendeva ai suoi piedi, verso il fiume Scoltenna e la pianura.
-
-Il paese, che poi prenderà nome Sandri dalla famiglia più importante del luogo, subì le conseguenze della guerra tra Obizzo di Montegarullo e gli Estensi, che nel 1406 la unirono alla provincia del Frignano, togliendole la lunga storia di comune indipendente di cui aveva goduto sino ad allora.
-
-Molto scarse sono le notizie che riguardano la rocca, che tuttavia è così importante già a partire dalla toponomastica: si ricorda l’episodio di ritorsione del commissario ducale Zanelli che, nel 1535 fece spianare la rocca, diroccare alcune case e con esse anche la Chiesa. Tutto ciò perchè vari abitanti di Rocchetta avevano partecipato al Sacco di Sestola ad opera dei Tanari. Questo episodio e’ importante perchè la rocca, non essendo stata distrutta completamente, venne ricostruita in parte, ed e’ da qui che deriva il nomigolo “Rocchetta”.
-
-Dell’antica costruzione non rimangono tracce visibili. anche perchè non esiste un vero e proprio centro storico consolidato, ma piuttosto vari gruppi di casolari.</p>
+              <p>Rocchetta Sandri è meta di escursionisti e amanti della natura. La Sagra di Santa Eurosia e le crescentine modenesi restano tradizioni vive che animano la comunità ogni anno.</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -156,72 +171,70 @@ Dell’antica costruzione non rimangono tracce visibili. anche perchè non esist
         <span class="section-badge reveal">Fotografie</span>
         <h2 class="section-title reveal">Galleria del Borgo</h2>
         <p class="section-subtitle reveal">Immagini reali con licenza Creative Commons – Wikimedia Commons</p>
-        <div class="gallery">
+        <div class="gallery" role="list">
 
-          <a class="gallery-item reveal"
+          <a class="gallery-item reveal" role="listitem"
              href="images/rocchetta_hero.jpg"
              data-caption="Panorama storico di Rocchetta Sandri – veduta aerea del borgo (foto d'epoca)">
             <img src="images/rocchetta_hero.jpg"
-                 alt="Panorama storico di Rocchetta Sandri" loading="lazy" />
-            <div class="gallery-item__overlay">
+                 alt="Veduta aerea storica del borgo di Rocchetta Sandri immerso nel verde appenninico" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
               <span>Panorama Storico</span>
             </div>
           </a>
 
-          <a class="gallery-item reveal"
+          <a class="gallery-item reveal" role="listitem"
              href="images/chiesa.jpg"
-             data-caption="Chiesa di Rocchetta Sandri – vista esterna">
+             data-caption="Chiesa di San Giovanni Battista – vista esterna del campanile in pietra locale">
             <img src="images/chiesa.jpg"
-                 alt="Chiesa di Rocchetta Sandri" loading="lazy" />
-            <div class="gallery-item__overlay">
+                 alt="Facciata esterna della Chiesa di San Giovanni Battista a Rocchetta Sandri" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
               <span>La Chiesa</span>
             </div>
           </a>
 
-          <a class="gallery-item reveal"
+          <a class="gallery-item reveal" role="listitem"
              href="images/tigelle.jpg"
-             data-caption="Tigelle – specialità culinaria dell'Appennino modenese">
+             data-caption="Tigelle – specialità culinaria dell'Appennino modenese, cotte sulle tigelle di terracotta">
             <img src="images/tigelle.jpg"
-                 alt="Tigelle" loading="lazy" />
-            <div class="gallery-item__overlay">
+                 alt="Tigelle appena cotte, il pane tipico dell'Appennino modenese servite con salumi e formaggi" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
               <span>Tigelle</span>
             </div>
           </a>
 
-          <a class="gallery-item reveal"
+          <a class="gallery-item reveal" role="listitem"
              href="images/fuoco.jpg"
-             data-caption="Fuoco campeggio – tradizione di convivialità">
+             data-caption="Fuoco campeggio – la tradizione del fuoco condiviso, cuore della convivialità appenninica">
             <img src="images/fuoco.jpg"
-                 alt="Fuoco campeggio" loading="lazy" />
-            <div class="gallery-item__overlay">
+                 alt="Fuoco acceso in un campeggio tra i boschi, simbolo della convivialità delle serate appenniniche" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
               <span>Convivialità</span>
             </div>
           </a>
 
-          <a class="gallery-item reveal"
+          <a class="gallery-item reveal" role="listitem"
              href="images/crescenti.jpg"
-             data-caption="Crescentine – pane fritto tipico dell'Appennino modenese">
+             data-caption="Crescentine modenesi – il pane fritto tipico dell'Appennino, da gustare con salumi e squacquerone">
             <img src="images/crescenti.jpg"
-                 alt="Crescentine" loading="lazy" />
-            <div class="gallery-item__overlay">
+                 alt="Crescentine fritte dorate servite su un tagliere con salumi tipici modenesi" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
               <span>Crescentine</span>
             </div>
           </a>
 
-          <a class="gallery-item reveal"
-             href="https://visitsestola.com/wp-content/uploads/2026/03/Rocchetta_Chiesa-04-scaled.jpg"
-             data-caption="La chiesa di Rocchetta Sandri – © Visit Sestola">
-            <img src="https://visitsestola.com/wp-content/uploads/2026/03/Rocchetta_Chiesa-04-scaled.jpg"
-                 alt="Chiesa di Rocchetta Sandri" loading="lazy"
-                 referrerpolicy="no-referrer" />
-            <div class="gallery-item__overlay">
-              <span>La Chiesa</span>
+          <a class="gallery-item reveal" role="listitem"
+             href="images/oratorio.jpg"
+             data-caption="L'oratorio di Rocchetta Sandri – uno dei luoghi di culto più antichi della frazione">
+            <img src="images/oratorio.jpg"
+                 alt="Oratorio storico di Rocchetta Sandri, piccolo edificio religioso in pietra dell'Appennino modenese" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>L'Oratorio</span>
             </div>
           </a>
 
-          
         </div>
-        <p class="gallery-note reveal">⚠️ La galleria mostra solo fotografie reali di Rocchetta Sandri. Foto storiche: archivio privato. Foto chiesa: © <a href="https://visitsestola.com/territorio/rocchetta-sandri/" target="_blank" rel="noopener">Visit Sestola</a>.</p>
+        <p class="gallery-note reveal">Foto storiche: archivio privato. Le fotografie sono di proprietà dei rispettivi autori.</p>
       </div>
     </section>
 
@@ -271,7 +284,7 @@ Dell’antica costruzione non rimangono tracce visibili. anche perchè non esist
         <span class="section-badge reveal">Posizione</span>
         <h2 class="section-title reveal">Dove Siamo</h2>
         <p class="section-subtitle reveal">Rocchetta Sandri, frazione di Sestola (MO) – Appennino Modenese</p>
-        <div id="mapid" class="reveal"></div>
+        <div id="mapid" class="reveal" role="region" aria-label="Mappa interattiva di Rocchetta Sandri"></div>
       </div>
     </section>
 
@@ -290,7 +303,7 @@ Dell’antica costruzione non rimangono tracce visibili. anche perchè non esist
         </div>
         <div class="contact-cta reveal">
           <p>Per informazioni su escursioni, alloggi e eventi locali:</p>
-          <a href="mailto:info@rocchettasandri.it" class="btn btn--primary" id="contact-email-btn">Scrivici</a>
+          <a href="mailto:info@rocchettasandri.it" class="btn btn--primary">Scrivici</a>
         </div>
       </div>
     </section>
@@ -301,18 +314,25 @@ Dell’antica costruzione non rimangono tracce visibili. anche perchè non esist
   <footer class="footer">
     <div class="container footer__inner">
       <p class="footer__logo">Rocchetta Sandri</p>
-      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Frazione di Sestola (MO). Immagini: Wikimedia Commons (CC BY-SA).</p>
-      <a href="#top" class="footer__back">↑ Torna su</a>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Frazione di Sestola (MO).</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="https://www.appenninomodenese.it" target="_blank" rel="noopener">Appennino Modenese</a>
+        <a href="#top" class="footer__back">↑ Torna su</a>
+      </nav>
     </div>
   </footer>
 
   <!-- Lightbox overlay -->
-  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Chiudi">&times;</button>
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Chiudi galleria">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Immagine precedente">&#8249;</button>
     <div class="lightbox__inner">
       <img src="" alt="" id="lightbox-img" />
       <p class="lightbox__caption" id="lightbox-caption"></p>
     </div>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Immagine successiva">&#8250;</button>
   </div>
 
   <!-- Leaflet JS -->
