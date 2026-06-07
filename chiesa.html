@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiesa di San Giovanni Battista – Rocchetta Sandri</title>
+  <meta name="description" content="La Chiesa Parrocchiale di Rocchetta Sandri, intitolata a San Giovanni Battista, risale al 1553. Scopri la sua storia e le sue opere d'arte." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page-specific styles ── */
+    .page-hero {
+      position: relative;
+      height: 56vh;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--stone);
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+    }
+    .page-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(43,35,24,.92) 0%,
+        rgba(43,35,24,.3) 60%,
+        transparent 100%
+      );
+      z-index: 1;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 0;
+      width: 100%;
+    }
+    .page-hero__content .container {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+    }
+    .breadcrumb a {
+      color: var(--gold-light);
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: rgba(255,255,255,.35); }
+    .page-hero__title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .page-hero__subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+    }
+
+    /* ── Article layout ── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3.5rem;
+      align-items: start;
+      padding: 4rem 0;
+    }
+    .article-body h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: var(--stone);
+      margin: 2rem 0 .75rem;
+      padding-top: .5rem;
+      border-top: 2px solid var(--gold);
+      display: inline-block;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p {
+      font-family: var(--font-body);
+      color: var(--stone-mid);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .article-body strong { color: var(--stone); font-weight: 600; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-style: italic;
+      color: var(--stone);
+      font-size: .97rem;
+    }
+
+    /* ── Sidebar ── */
+    .article-sidebar {
+      position: sticky;
+      top: 76px;
+    }
+    .sidebar-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card__header {
+      background: linear-gradient(135deg, var(--gold), var(--terra));
+      padding: 1rem 1.25rem;
+      color: var(--white);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .sidebar-card__body {
+      padding: 1.25rem;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(43,35,24,.07);
+      font-size: .88rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row__label { color: var(--stone-light); font-weight: 600; }
+    .info-row__value { color: var(--stone); text-align: right; max-width: 60%; }
+
+    .detail-chip {
+      display: inline-block;
+      padding: .3rem .75rem;
+      background: rgba(232,160,32,.15);
+      color: var(--terra);
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin: .25rem .2rem 0 0;
+    }
+
+    .sidebar-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Feature list ── */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    .feature-list__item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .feature-list__icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .feature-list__text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--stone);
+      margin-bottom: .2rem;
+    }
+    .feature-list__text p {
+      font-size: .9rem;
+      color: var(--stone-mid);
+      font-family: var(--font-body);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--terra);
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: 3rem;
+      padding: .6rem 1.25rem;
+      border: 2px solid var(--terra);
+      border-radius: 50px;
+      transition: background .2s, color .2s;
+    }
+    .back-link:hover {
+      background: var(--terra);
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="index.html#about">Il borgo</a></li>
+        <li><a href="index.html#storia">Storia</a></li>
+        <li><a href="index.html#gallery">Galleria</a></li>
+        <li><a href="index.html#territorio">Territorio</a></li>
+        <li><a href="index.html#map">Mappa</a></li>
+        <li><a href="index.html#contact">Contatti</a></li>
+      </ul>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <img
+      class="page-hero__bg"
+      src="images/chiesa.jpg"
+      alt="Facciata della Chiesa di San Giovanni Battista a Rocchetta Sandri"
+    />
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Rocchetta Sandri</a>
+          <span>›</span>
+          <a href="index.html#territorio">Territorio</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.75)">Chiesa Parrocchiale</span>
+        </nav>
+        <h1 class="page-hero__title">Chiesa di San Giovanni Battista</h1>
+        <p class="page-hero__subtitle">Un gioiello del Rinascimento appenninico — dal 1553</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main>
+    <section class="section section--light">
+      <div class="container">
+        <div class="article-layout">
+
+          <!-- Article body -->
+          <article class="article-body reveal">
+
+            <h2>La Facciata e il Portale Rinascimentale</h2>
+            <p>
+              L'attuale Chiesa Parrocchiale di Rocchetta Sandri, intitolata a <strong>San Giovanni Battista</strong> — protettore del paese, celebrato il 24 giugno — risale al <strong>1553</strong>, come attesta la data incisa sul portale laterale.
+            </p>
+            <p>
+              La facciata è essenziale, con parete contornata da due lesene d'angolo appena accennate, sulla quale risaltano unicamente il portale e il rosone. Il portale è decorato con <strong>fregi rinascimentali</strong>, elemento di raffinata lavorazione che contrasta piacevolmente con la sobrietà dell'insieme.
+            </p>
+
+            <div class="highlight-box">
+              <p>«La semplicità della facciata non prepara il visitatore alla sorpresa dell'interno, dove la concezione spaziale quattrocentesca si rivela in tutta la sua eleganza.»</p>
+            </div>
+
+            <h2>L'Interno: la Volta a Botte e le Cappelle</h2>
+            <p>
+              L'interno sorprende per la concezione spaziale di impostazione <strong>quattrocentesca</strong>. L'impianto è a sala allungata coperta da una <strong>volta a botte</strong> scandita da cinque archi, che conferisce all'ambiente un ritmo solenne e misurato.
+            </p>
+            <p>
+              Nella sala si aprono due <strong>cappelle laterali</strong> centrate sotto le lunette, che un tempo contenevano due pregevoli dipinti raffiguranti <em>San Stefano</em> e <em>Sant'Antonio</em>. Di notevole interesse è anche il mobile del XVIII secolo presente in sacrestia, testimonianza dell'artigianato locale di pregio.
+            </p>
+
+            <h2>Il Battistero Ligneo e gli Elementi Scultorei</h2>
+            <p>
+              L'altare di sinistra è preceduto, verso l'ingresso, da una nicchia di proporzioni minori che custodisce uno dei pezzi più preziosi dell'intera chiesa: un <strong>battistero ligneo</strong> in forma di tempietto a pianta centrale, di chiara <strong>ascendenza bramantesca</strong>.
+            </p>
+            <p>
+              Quest'opera in legno intagliato, con la sua planimetria centrale e le sue proporzioni armoniose, rappresenta un raro esempio di scultura architettonica applicata all'arredo sacro nell'Appennino modenese.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">🏛️</span>
+                <div class="feature-list__text">
+                  <h4>Portale con fregi rinascimentali</h4>
+                  <p>Il portale laterale, datato 1553, è decorato con fregi rinascimentali scolpiti in pietra locale, unico elemento ornamentale sulla facciata altrimenti sobria.</p>
+                </div>
+              </div>
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">⛪</span>
+                <div class="feature-list__text">
+                  <h4>Volta a botte a cinque campate</h4>
+                  <p>La copertura interna in volta a botte, scandita da cinque archi trasversali, richiama modelli architettonici del Quattrocento toscano-emiliano.</p>
+                </div>
+              </div>
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">🪵</span>
+                <div class="feature-list__text">
+                  <h4>Battistero ligneo bramantesco</h4>
+                  <p>Tempietto a pianta centrale intagliato nel legno, di ispirazione bramantesca: un unicum nell'area del Frignano per qualità esecutiva e concezione spaziale.</p>
+                </div>
+              </div>
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">🪣</span>
+                <div class="feature-list__text">
+                  <h4>Acquasantiera in arenaria</h4>
+                  <p>L'acquasantiera della porta laterale, scolpita in arenaria nella tipica forma a bacinella incastrata nel muro, potrebbe derivare dalla chiesa primitiva pre-1535.</p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Un Legame con la Chiesa Primitiva</h2>
+            <p>
+              Alcuni elementi della chiesa attuale potrebbero avere origini ancora più antiche. L'acquasantiera della porta laterale — scolpita in <strong>arenaria</strong> con la tipica forma a bacinella incastrata nel muro — potrebbe essere un recupero dalla chiesa primitiva, quella distrutta nel <strong>1535</strong> per ordine del commissario ducale Zanelli come ritorsione per la partecipazione degli abitanti al Sacco di Sestola.
+            </p>
+            <p>
+              La chiesa attuale fu dunque costruita pochi decenni dopo quella distruzione, nel 1553, come rinascita spirituale e materiale della comunità di Rocchetta.
+            </p>
+
+            <a href="index.html#territorio" class="back-link">← Torna a Cosa Scoprire</a>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="article-sidebar">
+            <div class="sidebar-card reveal">
+              <img class="sidebar-image" src="images/chiesa.jpg" alt="Esterno della chiesa" loading="lazy" />
+              <div class="sidebar-card__header">⛪ Scheda</div>
+              <div class="sidebar-card__body">
+                <div class="info-row">
+                  <span class="info-row__label">Intitolazione</span>
+                  <span class="info-row__value">San Giovanni Battista</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Anno</span>
+                  <span class="info-row__value">1553</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Stile</span>
+                  <span class="info-row__value">Rinascimentale</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Ubicazione</span>
+                  <span class="info-row__value">Rocchetta Sandri, Sestola (MO)</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Patrono</span>
+                  <span class="info-row__value">24 giugno</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🏷️ Elementi di interesse</div>
+              <div class="sidebar-card__body">
+                <span class="detail-chip">Portale 1553</span>
+                <span class="detail-chip">Volta a botte</span>
+                <span class="detail-chip">Battistero ligneo</span>
+                <span class="detail-chip">Fregi rinascimentali</span>
+                <span class="detail-chip">Acquasantiera medievale</span>
+                <span class="detail-chip">Mobile XVIII sec.</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">📍 Come arrivare</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  La chiesa si trova nel centro della frazione di Rocchetta Sandri, nel comune di Sestola (MO), Appennino Modenese. Raggiungibile da Modena in circa 1h 15min percorrendo la SS12.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Frazione di Sestola (MO).</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="index.html#top" class="footer__back">↑ Torna su</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* Navbar */
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.navbar__links');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
