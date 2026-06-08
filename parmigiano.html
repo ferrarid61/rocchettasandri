@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parmigiano-Reggiano di Montagna – Rocchetta Sandri</title>
+  <meta name="description" content="Il Parmigiano-Reggiano di Montagna di Rocchetta Sandri: produzione tradizionale, latte d'alpeggio e stagionatura nel Caseificio Santa Lucia di Sestola." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page-specific styles ── */
+    .page-hero {
+      position: relative;
+      height: 56vh;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--stone);
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+    }
+    .page-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(43,35,24,.92) 0%,
+        rgba(43,35,24,.3) 60%,
+        transparent 100%
+      );
+      z-index: 1;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 0;
+      width: 100%;
+    }
+    .page-hero__content .container {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+    }
+    .breadcrumb a {
+      color: var(--gold-light);
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: rgba(255,255,255,.35); }
+    .page-hero__title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .page-hero__subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+    }
+
+    /* ── Article layout ── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3.5rem;
+      align-items: start;
+      padding: 4rem 0;
+    }
+    .article-body h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: var(--stone);
+      margin: 2rem 0 .75rem;
+      padding-top: .5rem;
+      border-top: 2px solid var(--gold);
+      display: inline-block;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p {
+      font-family: var(--font-body);
+      color: var(--stone-mid);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .article-body strong { color: var(--stone); font-weight: 600; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-style: italic;
+      color: var(--stone);
+      font-size: .97rem;
+    }
+
+    /* ── Process steps ── */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .process-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .process-step__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold), var(--terra));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 50%;
+    }
+    .process-step__content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--stone);
+      margin-bottom: .3rem;
+    }
+    .process-step__content p {
+      font-size: .95rem;
+      margin: 0;
+    }
+
+    /* ── Sidebar ── */
+    .article-sidebar {
+      position: sticky;
+      top: 76px;
+    }
+    .sidebar-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card__header {
+      background: linear-gradient(135deg, var(--gold), var(--terra));
+      padding: 1rem 1.25rem;
+      color: var(--white);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .sidebar-card__body {
+      padding: 1.25rem;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(43,35,24,.07);
+      font-size: .88rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row__label { color: var(--stone-light); font-weight: 600; }
+    .info-row__value { color: var(--stone); text-align: right; max-width: 60%; }
+
+    .detail-chip {
+      display: inline-block;
+      padding: .3rem .75rem;
+      background: rgba(232,160,32,.15);
+      color: var(--terra);
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin: .25rem .2rem 0 0;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--terra);
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: 3rem;
+      padding: .6rem 1.25rem;
+      border: 2px solid var(--terra);
+      border-radius: 50px;
+      transition: background .2s, color .2s;
+    }
+    .back-link:hover {
+      background: var(--terra);
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="index.html#about">Il borgo</a></li>
+        <li><a href="index.html#storia">Storia</a></li>
+        <li><a href="index.html#gallery">Galleria</a></li>
+        <li><a href="index.html#territorio">Territorio</a></li>
+        <li><a href="index.html#map">Mappa</a></li>
+        <li><a href="index.html#contact">Contatti</a></li>
+      </ul>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <img
+      class="page-hero__bg"
+      src="images/rocchetta_hero.jpg"
+      alt="Paesaggio dell'Appennino modenese, patria del Parmigiano-Reggiano"
+    />
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Rocchetta Sandri</a>
+          <span>›</span>
+          <a href="index.html#territorio">Territorio</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.75)">Parmigiano-Reggiano di Montagna</span>
+        </nav>
+        <h1 class="page-hero__title">Parmigiano-Reggiano di Montagna</h1>
+        <p class="page-hero__subtitle">Latte d'alpeggio, tradizione casaria e stagionatura — La ricchezza del territorio appenninico</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main>
+    <section class="section section--light">
+      <div class="container">
+        <div class="article-layout">
+
+          <!-- Article body -->
+          <article class="article-body reveal">
+
+            <h2>La Tradizione Casearia dell'Appennino</h2>
+            <p>
+              Il <strong>Parmigiano-Reggiano di Montagna</strong> è il cuore produttivo dell'Appennino modenese. A Rocchetta Sandri e nella zona di Sestola, la tradizione casearia ha radici profonde, legate all'allevamento bovino e alla qualità del latte prodotto negli alpeggi montani.
+            </p>
+            <p>
+              L'economia tradizionale di Rocchetta si basa sulla produzione di latte di alta qualità. Le vacche allevate nei pascoli appenninici producono un latte ricco di sostanze nutritive, perfetto per la caseificazione. Questo non è casuale: la flora delle montagne, l'aria pulita e le tradizioni culinarie locali hanno fatto del Parmigiano-Reggiano montano un prodotto riconosciuto nel mondo intero.
+            </p>
+
+            <div class="highlight-box">
+              <p>«Il Parmigiano-Reggiano non è solo un formaggio: è il sapore della montagna, condensato in ogni cristallo, in ogni stagionatura. È la testimonianza vivente dell'Appennino modenese.»</p>
+            </div>
+
+            <h2>Il Caseificio Santa Lucia: Una Storia di Tradizione</h2>
+            <p>
+              Nel <strong>1955</strong>, il Signor Negus insieme ai due figli casari Averardo e Michele Cerfogli apre un piccolo Caseificio privato che acquistava il latte dai contadini della zona di Sestola. Il Caseificio venne chiamato <strong>Santa Lucia</strong> come segno di buon auspicio: era infatti tradizione contadina affidarsi ai santi per avere buona sorte.
+            </p>
+            <p>
+              Nel <strong>1962</strong> il caseificio diventa una cooperativa agricola che unisce i tanti piccoli agricoltori che lavoravano nella zona. Negli anni '70 i soci fondatori si dividono formando due cooperative. Nacque così la cooperativa Santa Eurosia (anche conosciuta come il Caseificio Nuovo) in onore della santa protettrice del piccolo paese, mentre il Caseificio Santa Lucia rimase immutato nel nome e nella sede. Insieme contavano più di 100 soci.
+            </p>
+            <p>
+              Con il passare degli anni i soci conferenti diminuirono, fino ad arrivare agli anni '80 quando le due cooperative si riunirono di nuovo sotto un unico Caseificio: il <strong>Santa Lucia</strong>, che continua tutt'oggi la sua opera di produzione del Parmigiano-Reggiano D.O.P.
+            </p>
+
+            <h2>Il Processo di Lavorazione</h2>
+            <p>
+              Ogni giorno il latte del mattino appena munto arriva al Caseificio direttamente dalle stalle. Questo processo viene seguito con precisione secondo le regole storiche della caseificazione emiliana.
+            </p>
+
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="process-step__number">1</div>
+                <div class="process-step__content">
+                  <h4>Raccolta e riscaldamento del latte</h4>
+                  <p>Il latte della mattina appena munto viene versato nelle caldaie di rame, insieme al latte della sera, al siero ottenuto dalla lavorazione del giorno precedente e al caglio.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step__number">2</div>
+                <div class="process-step__content">
+                  <h4>Cottura ed estrazione</h4>
+                  <p>Una volta cotto ed estratto, le esperte mani del mastro casaro formano il Parmigiano Reggiano, creando la forma caratteristica del formaggio.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step__number">3</div>
+                <div class="process-step__content">
+                  <h4>Formatura e marchiatura</h4>
+                  <p>La forma ottenuta viene tagliata e avvolta nella tela. Successivamente viene immessa in una fascera che le darà la tipica forma cilindrica. A questo punto viene applicata una placca di caseina che ne identifica la forma.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step__number">4</div>
+                <div class="process-step__content">
+                  <h4>Immersione e riposo</h4>
+                  <p>Dopo l'immersione in una soluzione di acqua e sale, la forma può riposare nel magazzino in attesa della marchiatura ufficiale D.O.P.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step__number">5</div>
+                <div class="process-step__content">
+                  <h4>Stagionatura</h4>
+                  <p>Le forme di Parmigiano Reggiano restano in magazzino per un minimo di 12 mesi. La stagionatura è fondamentale per acquisire le caratteristiche organolettiche che contraddistinguono il prodotto.</p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Qualità e Riconoscimento</h2>
+            <p>
+              Il Parmigiano-Reggiano prodotto nel Caseificio Santa Lucia è <strong>D.O.P.</strong> (Denominazione di Origine Protetta), il che significa che la sua produzione è sottoposta a rigidi controlli e disciplinari di produzione. Solo il formaggio che risponde a specifiche caratteristiche può ricevere la marchiatura ufficiale.
+            </p>
+            <p>
+              La qualità del Parmigiano-Reggiano montano è riconosciuta per le sue proprietà organolettiche uniche: un gusto complesso, con note di nocciola e caramello, una struttura cristallina ben sviluppata, e una persistenza di flavour che lo distingue da altri formaggi. È il risultato di una lunga tradizione, della qualità del latte d'alpeggio, e dell'esperienza tramandata da generazioni di casari.
+            </p>
+
+            <a href="index.html#territorio" class="back-link">← Torna a Cosa Scoprire</a>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="article-sidebar">
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🧀 Il Prodotto</div>
+              <div class="sidebar-card__body">
+                <div class="info-row">
+                  <span class="info-row__label">Nome</span>
+                  <span class="info-row__value">Parmigiano-Reggiano D.O.P.</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Tipo</span>
+                  <span class="info-row__value">Formaggio a pasta dura</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Stagionatura minima</span>
+                  <span class="info-row__value">12 mesi</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Origine latte</span>
+                  <span class="info-row__value">Pascoli appenninici</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">📚 La Storia</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.75rem; line-height:1.6;">
+                  <strong>1955:</strong> Fondazione del Caseificio Santa Lucia
+                </p>
+                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.75rem; line-height:1.6;">
+                  <strong>1962:</strong> Trasformazione in cooperativa agricola
+                </p>
+                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  <strong>1980s:</strong> Riunione delle due cooperative sotto il Santa Lucia
+                </p>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🏷️ Caratteristiche</div>
+              <div class="sidebar-card__body">
+                <span class="detail-chip">D.O.P.</span>
+                <span class="detail-chip">Latte montano</span>
+                <span class="detail-chip">Tradizionale</span>
+                <span class="detail-chip">Stagionato</span>
+                <span class="detail-chip">Cristallino</span>
+                <span class="detail-chip">Sapore complesso</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">📍 Caseificio Santa Lucia</div>
+              <div class="sidebar-card__body">
+                <div class="info-row">
+                  <span class="info-row__label">Indirizzo</span>
+                  <span class="info-row__value" style="max-width:100%; text-align:right; font-size:.8rem;">Via per Vesale 141, Sestola (MO)</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Telefono</span>
+                  <span class="info-row__value">0536 67161</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Email</span>
+                  <span class="info-row__value" style="font-size:.75rem; max-width:100%; text-align:right;">labottegamontanara@libero.it</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🌾 Latte di Qualità</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  Prodotto dalle vacche allevate nei pascoli appenninici di Rocchetta Sandri e zona. Ricco di sostanze nutritive, perfetto per la caseificazione tradizionale.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Frazione di Sestola (MO).</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="index.html#top" class="footer__back">↑ Torna su</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* Navbar */
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.navbar__links');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
