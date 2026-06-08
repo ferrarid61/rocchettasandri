@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crescentine Montanare – Rocchetta Sandri</title>
-  <meta name="description" content="Le crescentine modenesi: il pane tradizionale dell'Appennino cotto nelle tigelle. Scopri la vera differenza tra crescentina e tigella e il movimento 'Don't call me Tigella'." />
+  <title>Oratorio della Madonna del Voto – Rocchetta Sandri</title>
+  <meta name="description" content="L'Oratorio della Madonna del Voto a Rocchetta Sandri: storia, il voto del 1855 durante l'epidemia di colera, e la festa annuale." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -105,6 +105,7 @@
       margin-bottom: 1.25rem;
     }
     .article-body strong { color: var(--stone); font-weight: 600; }
+    .article-body em { font-style: italic; }
 
     .highlight-box {
       background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
@@ -167,31 +168,41 @@
       margin: .25rem .2rem 0 0;
     }
 
-    /* ── Comparison box ── */
-    .comparison-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin: 2rem 0;
-      background: rgba(232,160,32,.08);
-      border-radius: var(--radius-md);
-      padding: 1.75rem;
+    .timeline-mini {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
     }
-    .comparison-item h4 {
-      font-size: 1.1rem;
+    .timeline-mini__item {
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--gold);
+      position: relative;
+    }
+    .timeline-mini__item::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 2px;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--white);
+    }
+    .timeline-mini__year {
       font-weight: 700;
       color: var(--terra);
-      margin-bottom: .75rem;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      display: block;
+      margin-bottom: .2rem;
     }
-    .comparison-item p {
-      font-size: .95rem;
-      line-height: 1.7;
+    .timeline-mini__text {
+      font-size: .82rem;
       color: var(--stone-mid);
-      margin: 0;
       font-family: var(--font-body);
+      line-height: 1.5;
     }
 
     /* ── Feature list ── */
@@ -247,7 +258,6 @@
     @media (max-width: 900px) {
       .article-layout { grid-template-columns: 1fr; }
       .article-sidebar { position: static; }
-      .comparison-box { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -273,8 +283,8 @@
   <div class="page-hero">
     <img
       class="page-hero__bg"
-      src="images/crescenti2.jpg"
-      alt="Crescentine modenesi appena cotte"
+      src="images/oratorio.jpg"
+      alt="L'Oratorio della Madonna del Voto a Rocchetta Sandri"
     />
     <div class="page-hero__overlay"></div>
     <div class="page-hero__content">
@@ -284,10 +294,10 @@
           <span>›</span>
           <a href="index.html#territorio">Territorio</a>
           <span>›</span>
-          <span style="color:rgba(255,255,255,.75)">Crescentine Montanare</span>
+          <span style="color:rgba(255,255,255,.75)">Oratorio della Madonna del Voto</span>
         </nav>
-        <h1 class="page-hero__title">Crescentine Montanare</h1>
-        <p class="page-hero__subtitle">Il pane della tradizione appenninica — Una battaglia culturale per la giusta denominazione</p>
+        <h1 class="page-hero__title">Oratorio della Madonna del Voto</h1>
+        <p class="page-hero__subtitle">Un santuario di devozione — Dal 1631 ai giorni nostri — La festa annuale dell'ultimo settembre</p>
       </div>
     </div>
   </div>
@@ -301,84 +311,88 @@
           <!-- Article body -->
           <article class="article-body reveal">
 
-            <h2>Il Malinteso che Unisce l'Appennino</h2>
+            <h2>Un Santuario Millenario</h2>
             <p>
-              Quella che si mangia si chiama <strong>crescentina</strong> (o crescenta). La <strong>tigella</strong> è unicamente lo stampo di terracotta o pietra usato per cuocerla. Un'apparente sottigliezza linguistica che nasconde una vera questione di identità culturale e gastronomica.
+              Nel centro di Rocchetta Sandri, attraverso un'antica scala d'arenaria, si giunge in un piccolo ma bellissimo pianoro ove si erge l'oratorio della "Crocetta", dedicato alla natività di Maria (8 Settembre), che è anche chiamato <strong>"Oratorio della Madonna delle Grazie"</strong>.
             </p>
             <p>
-              Chiamare il cibo "tigella" è l'equivalente gastronomico di confondere la teglia con la torta o la caffettiera con il caffè. Eppure questo errore è così diffuso al di fuori dell'Appennino modenese che ha spinto una vera e propria battaglia culturale, incarnata dal celebre movimento <strong><a href="https://www.instagram.com/dontcallmetigella/" target="_blank" rel="noopener">Don't call me Tigella</a></strong>.
+              L'attuale oratorio è stato riedificato ed ampliato nel <strong>1935</strong>, mentre l'antico, come risulta dalla scritta sull'architrave della porta della sagrestia, era stato costruito nel <strong>1631</strong> e restaurato nel <strong>1721</strong>.
+            </p>
+            <p>
+              L'antico oratorio era attiguo all'attuale campanile, il quale, secondo vari cenni storici, risulta della stessa epoca. Il santuario era di proporzioni più modeste e aveva tre stanze che molto probabilmente servivano come alloggio di un eremita, che dedicava la sua vita alla preghiera e alla custodia dell'oratorio.
+            </p>
+
+            <h2>L'Epidemia di Colera del 1855</h2>
+            <p>
+              Nel <strong>1855</strong>, una terribile epidemia devastò l'Italia, giungendo sino a Rocchetta. Era il "Morbo Asiatico", volgarmente chiamato <strong>"Colera"</strong>. Dai registri dei morti della parrocchia, risulta che il morbo ebbe inizio l'8 settembre del 1855, con la morte di Ciocci Domenica (di anni 71) e si prolungò per tutto il mese di settembre, terminando con l'ultima morte di colera il 9 ottobre dello stesso anno.
+            </p>
+            <p>
+              Le vittime di questa tragedia in tutto furono <strong>26 persone</strong>. Come specifica ogni singolo atto di morte, anche i colerosi erano assistiti dal parroco (don Domenico Benassi) e tutti ricevevano i sacramenti della confessione, comunione ed unzione degli infermi.
             </p>
 
             <div class="highlight-box">
-              <p>«Non è una tigella. È una crescentina. La tigella è lo stampo. Riconoscere questa differenza significa rispettare la tradizione genuina dell'Appennino modenese.»</p>
+              <p>«I loro cadaveri, per evitare la diffusione dell'epidemia, non erano portati in chiesa per le "Solite Esequie" e non venivano sepolti nel cimitero parrocchiale, ma di primissimo mattino, accompagnati dal parroco e dai parenti più ristretti, venivano benedetti e sepolti in luoghi appartati, lontano dal paese abitato.»</p>
             </div>
 
-            <h2>La Vera Differenza della Tradizione Emiliana</h2>
-
-            <div class="comparison-box">
-              <div class="comparison-item">
-                <h4>🪵 La Tigella</h4>
-                <p>È il disco o lo stampo realizzato tradizionalmente in <strong>argilla refrattaria</strong>, estratta nei boschi dell'Appennino. Spesso è decorato con l'antico simbolo del <strong>"fiore della vita"</strong>, che serve a marchiare l'impasto durante la cottura. È lo strumento, non il cibo.</p>
-              </div>
-              <div class="comparison-item">
-                <h4>🥖 La Crescentina</h4>
-                <p>È il vero e proprio <strong>pane rotondo</strong> ottenuto dall'impasto di farina, acqua e sale. Viene cotto a pressione inserendolo tra due tigelle roventi. È il prodotto finito, il risultato della tradizione, il cibo che arriva sulla tavola.</p>
-              </div>
-            </div>
-
-            <h2>Il Movimento "Don't call me Tigella"</h2>
+            <h2>Il Voto alla Madonna e il Miracolo</h2>
             <p>
-              Il celebre movimento enogastronomico <strong>Don't call me Tigella</strong> combatte da anni per fare chiarezza su questo errore linguistico molto comune al di fuori dell'Appennino modenese. Non è una battaglia pedante, ma una difesa della memoria culinaria locale, della precisione storica e del rispetto verso chi ha tramandato questi saperi di generazione in generazione.
+              In questa situazione d'immane tragedia e d'immenso dolore la gente di Rocchetta, assieme al parroco, si è rivolta fiduciosa alla <strong>Madonna delle Grazie</strong>, con funzioni religiose, preghiere, confessioni, comunioni, celebrazioni eucaristiche, perché facesse cessare questo terribile flagello.
             </p>
             <p>
-              La campagna punta il dito sulla confusione che vede il termine "tigella" usato indiscriminatamente per indicare sia lo stampo che il pane. Una confusione che svaluta il riconoscimento delle origini e della tecnica di preparazione genuina.
+              La comunità fece allora un solenne <strong>"Voto"</strong> alla Vergine: <em>se avesse ottenuto dal Signore la grazia di essere liberati dal "Colera", tutta la parrocchia si sarebbe impegnata con promessa solenne per tutti gli anni avvenire di ricordare e ringraziare, con immensa gioia e gratitudine, questa speciale grazia e precisamente l'ultima settimana di settembre d'ogni anno, con preghiere, sacramenti, S.S. Messa e processione.</em>
+            </p>
+            <p>
+              A questo voto solenne, <em>"immediatamente il Colera cessò"</em> (come riferisce don Rutilio Landi). Fu così che la comunità ricevette quella che credette essere una grazia divina, un intervento miracoloso della Madonna.
             </p>
 
-            <h2>L'Argilla Refrattaria e il Fiore della Vita</h2>
+            <h2>La Costituzione del Capitale Perpetuo nel 1856</h2>
             <p>
-              Le tigelle autentiche sono realizzate in <strong>argilla refrattaria</strong>, estratta tradizionalmente nei boschi dell'Appennino. Questo materiale non è casuale: la refrattarietà permette di mantenere il calore in modo uniforme e di resistere ai cicli ripetuti di cottura senza danneggiarsi.
+              L'anno seguente (1856), il giorno 7 agosto, presso il notaio Dottor Cesare Cassai, gli abitanti di Rocchetta costituirono un <strong>capitale di modenesi £ 1000</strong>, messe assieme dalle offerte di tutti i parrocchiani. I frutti annuali (6%) dovevano servire al mantenimento dell'oratorio e per le celebrazioni religiose dell'ultima settimana di settembre.
             </p>
             <p>
-              Il <strong>fiore della vita</strong> — il simbolo geometrico antico inciso su molte tigelle — non è un mero ornamento. Serve a marchiare l'impasto durante la cottura, creando un pattern riconoscibile e conferendo una firma artigianale a ogni crescentina. È il sigillo della tradizione, il ricordo della mano che ha creato lo strumento.
+              La somma di £ 1000 fu depositata presso la curia di Nonantola, suddivisa come segue: £ 300 per il Triduo del Voto e £ 700 per il mantenimento dell'oratorio, riparazioni, arredi e cera, investiti in cartelle ("Società Ferroviarie Piacentine") che purtroppo poco dopo fecero fallimento e andarono perdute.
             </p>
 
             <div class="feature-list">
               <div class="feature-list__item reveal">
-                <span class="feature-list__icon">🪵</span>
+                <span class="feature-list__icon">⛪</span>
                 <div class="feature-list__text">
-                  <h4>Argilla refrattaria dei boschi appenninici</h4>
-                  <p>Estratta tradizionalmente da giacimenti locali, è l'unico materiale che garantisce la giusta distribuzione del calore durante la cottura.</p>
+                  <h4>Fondazione nel 1631</h4>
+                  <p>L'oratorio originale è costruito con dedica alla Natività di Maria, con restauri nel 1721 e riedificazione nel 1935.</p>
                 </div>
               </div>
               <div class="feature-list__item reveal">
-                <span class="feature-list__icon">✨</span>
+                <span class="feature-list__icon">🙏</span>
                 <div class="feature-list__text">
-                  <h4>Il fiore della vita come firma artigianale</h4>
-                  <p>Il simbolo geometrico antico inciso sulle tigelle marca l'impasto e ricorda l'originalità e la manualità della tradizione.</p>
+                  <h4>Il Voto della comunità (1855)</h4>
+                  <p>Durante l'epidemia di colera, la comunità fa voto di celebrare la Madonna ogni anno se ottenuta la grazia della salvezza.</p>
                 </div>
               </div>
               <div class="feature-list__item reveal">
-                <span class="feature-list__icon">🍞</span>
+                <span class="feature-list__icon">💰</span>
                 <div class="feature-list__text">
-                  <h4>Impasto semplice: farina, acqua, sale</h4>
-                  <p>La crescentina non richiede ingredienti elaborati. La sua qualità risiede nella tecnica di cottura e nella tradizione tramandato.</p>
+                  <h4>Capitale perpetuo (1856)</h4>
+                  <p>Costituito un fondo di £ 1000 per il mantenimento dell'oratorio e le celebrazioni annuali del voto.</p>
                 </div>
               </div>
               <div class="feature-list__item reveal">
-                <span class="feature-list__icon">🔥</span>
+                <span class="feature-list__icon">📅</span>
                 <div class="feature-list__text">
-                  <h4>Cottura a pressione tra due tigelle roventi</h4>
-                  <p>È il calore e la pressione simultanea dei due stampi che creano la texture unica della crescentina, gonfia e croccante.</p>
+                  <h4>Festa annuale dell'ultimo settembre</h4>
+                  <p>Ogni anno, l'ultima domenica di settembre, la comunità celebra la Madonna del Voto con messa, processione e preghiere.</p>
                 </div>
               </div>
             </div>
 
-            <h2>La Crescentina in Tavola</h2>
+            <h2>La "Madonna del Voto" nei Secoli</h2>
             <p>
-              La crescentina viene tradizionalmente servita calda, spesso accompagnata da <strong>salumi locali</strong> — mortadella, spalla, pancetta — oppure dal <strong>pesto montanaro</strong>: un trito di lardo, aglio e rosmarino che conferisce un sapore rustico e inconfondibile.
+              Da allora, al titolo della "Madonna delle Grazie" si è aggiunto ufficialmente <strong>"Madonna del Voto"</strong> e così l'<strong>ultima domenica di settembre</strong> è chiamata <strong>"La Festa della Madonna del Voto"</strong>.
             </p>
             <p>
-              Durante le due sagre annuali di Rocchetta Sandri — la Sagra di Santa Eurosia e altre celebrazioni locali — le crescentine riecheggiano ancora il profumo della tradizione, cotte con le stesse tecniche e condite con i sapori che gli abitanti hanno tramandato nei secoli.
+              Questa festa rappresenta un legame profondo tra la comunità e la devozione alla Vergine, un ricordo perpetuo della sofferenza patita nel 1855, della fede che univa il popolo di Rocchetta, e della promessa mantenuta per oltre 150 anni.
+            </p>
+            <p>
+              L'oratorio rimane un luogo sacro di culto e devozione, visitato dagli abitanti durante le celebrazioni annuali. La salita attraverso l'antica scala d'arenaria è ancora oggi un percorso spirituale che conduce al piccolo santuario, proprio come è stato per i rocchettesi che salirono con il cuore pieno di speranza e di fede nel 1855.
             </p>
 
             <a href="index.html#territorio" class="back-link">← Torna a Cosa Scoprire</a>
@@ -388,65 +402,69 @@
           <!-- Sidebar -->
           <aside class="article-sidebar">
             <div class="sidebar-card reveal">
-              <div class="sidebar-card__header">🥖 Ingredienti Base</div>
+              <div class="sidebar-card__header">⏰ Cronologia</div>
               <div class="sidebar-card__body">
-                <div class="info-row">
-                  <span class="info-row__label">Farina</span>
-                  <span class="info-row__value">Tipo 0 o 00</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-row__label">Acqua</span>
-                  <span class="info-row__value">Fredda</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-row__label">Sale</span>
-                  <span class="info-row__value">Q.b.</span>
-                </div>
-                <div class="info-row">
-                  <span class="info-row__label">Lievito</span>
-                  <span class="info-row__value">Naturale (opzionale)</span>
+                <div class="timeline-mini">
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1631</span>
+                    <span class="timeline-mini__text">Fondazione dell'oratorio</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1721</span>
+                    <span class="timeline-mini__text">Restauro</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1855</span>
+                    <span class="timeline-mini__text">Epidemia di colera — Il Voto</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1856</span>
+                    <span class="timeline-mini__text">Costituzione del capitale perpetuo</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1935</span>
+                    <span class="timeline-mini__text">Riedificazione e ampliamento</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="sidebar-card reveal">
-              <div class="sidebar-card__header">🏷️ Terminologia Corretta</div>
+              <div class="sidebar-card__header">🏷️ Informazioni</div>
               <div class="sidebar-card__body">
-                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.75rem; line-height:1.6;">
-                  <strong>Crescentina:</strong> il pane cotto
-                </p>
-                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
-                  <strong>Tigella:</strong> lo stampo (non il cibo)
-                </p>
+                <div class="info-row">
+                  <span class="info-row__label">Dedicazione</span>
+                  <span class="info-row__value">Madonna delle Grazie</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Titolo aggiunto</span>
+                  <span class="info-row__value">Madonna del Voto</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Festa</span>
+                  <span class="info-row__value">Ultima domenica settembre</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Festa della Natività</span>
+                  <span class="info-row__value">8 Settembre</span>
+                </div>
               </div>
             </div>
 
             <div class="sidebar-card reveal">
-              <div class="sidebar-card__header">🍽️ Abbinamenti Tradizionali</div>
-              <div class="sidebar-card__body">
-                <span class="detail-chip">Mortadella</span>
-                <span class="detail-chip">Spalla</span>
-                <span class="detail-chip">Pancetta</span>
-                <span class="detail-chip">Pesto montanaro</span>
-                <span class="detail-chip">Lardo d'Arista</span>
-                <span class="detail-chip">Formaggi locali</span>
-              </div>
-            </div>
-
-            <div class="sidebar-card reveal">
-              <div class="sidebar-card__header">📍 Dove Provarle</div>
+              <div class="sidebar-card__header">📍 Ubicazione</div>
               <div class="sidebar-card__body">
                 <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
-                  Le crescentine sono tradizionalmente servite durante la <strong>Sagra di Santa Eurosia</strong> a Rocchetta Sandri e nelle feste locali dell'Appennino modenese. Alcuni locali le propongono durante tutto l'anno.
+                  Nel centro di Rocchetta Sandri, raggiungibile attraverso un'antica scala d'arenaria. Si erge su un piccolo e bellissimo pianoro con vista sulla vallata.
                 </p>
               </div>
             </div>
 
             <div class="sidebar-card reveal">
-              <div class="sidebar-card__header">📚 Riconoscimenti</div>
+              <div class="sidebar-card__header">📚 Il Voto della Comunità</div>
               <div class="sidebar-card__body">
                 <p style="font-size:.82rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
-                  <strong><a href="https://www.instagram.com/dontcallmetigella/" target="_blank" rel="noopener" style="color:var(--terra); font-weight:600;">Don't call me Tigella</a></strong> — Movimento per la corretta denominazione della crescentina modenese.
+                  Una promessa solenne di celebrare la Madonna con preghiere, sacramenti, S.S. Messa e processione se ottenuta la grazia di essere liberati dal colera.
                 </p>
               </div>
             </div>
