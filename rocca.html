@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Rocca Medievale – Rocchetta Sandri</title>
+  <meta name="description" content="Castrum Scoplano, il presidio longobardo che controllava la vallata. Dalla prima menzione nel 753 d.C. al 1535. La storia della rocca che diede il nome al borgo." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page-specific styles ── */
+    .page-hero {
+      position: relative;
+      height: 56vh;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--stone);
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+    }
+    .page-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(43,35,24,.92) 0%,
+        rgba(43,35,24,.3) 60%,
+        transparent 100%
+      );
+      z-index: 1;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 0;
+      width: 100%;
+    }
+    .page-hero__content .container {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+    }
+    .breadcrumb a {
+      color: var(--gold-light);
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: rgba(255,255,255,.35); }
+    .page-hero__title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .page-hero__subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+    }
+
+    /* ── Article layout ── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3.5rem;
+      align-items: start;
+      padding: 4rem 0;
+    }
+    .article-body h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: var(--stone);
+      margin: 2rem 0 .75rem;
+      padding-top: .5rem;
+      border-top: 2px solid var(--gold);
+      display: inline-block;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p {
+      font-family: var(--font-body);
+      color: var(--stone-mid);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .article-body strong { color: var(--stone); font-weight: 600; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-style: italic;
+      color: var(--stone);
+      font-size: .97rem;
+    }
+
+    /* ── Sidebar ── */
+    .article-sidebar {
+      position: sticky;
+      top: 76px;
+    }
+    .sidebar-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card__header {
+      background: linear-gradient(135deg, var(--gold), var(--terra));
+      padding: 1rem 1.25rem;
+      color: var(--white);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .sidebar-card__body {
+      padding: 1.25rem;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(43,35,24,.07);
+      font-size: .88rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row__label { color: var(--stone-light); font-weight: 600; }
+    .info-row__value { color: var(--stone); text-align: right; max-width: 60%; }
+
+    .detail-chip {
+      display: inline-block;
+      padding: .3rem .75rem;
+      background: rgba(232,160,32,.15);
+      color: var(--terra);
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin: .25rem .2rem 0 0;
+    }
+
+    .timeline-mini {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+    .timeline-mini__item {
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--gold);
+      position: relative;
+    }
+    .timeline-mini__item::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 2px;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--white);
+    }
+    .timeline-mini__year {
+      font-weight: 700;
+      color: var(--terra);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      display: block;
+      margin-bottom: .2rem;
+    }
+    .timeline-mini__text {
+      font-size: .82rem;
+      color: var(--stone-mid);
+      font-family: var(--font-body);
+      line-height: 1.5;
+    }
+
+    /* ── Feature list ── */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    .feature-list__item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .feature-list__icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .feature-list__text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--stone);
+      margin-bottom: .2rem;
+    }
+    .feature-list__text p {
+      font-size: .9rem;
+      color: var(--stone-mid);
+      font-family: var(--font-body);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--terra);
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: 3rem;
+      padding: .6rem 1.25rem;
+      border: 2px solid var(--terra);
+      border-radius: 50px;
+      transition: background .2s, color .2s;
+    }
+    .back-link:hover {
+      background: var(--terra);
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="index.html#about">Il borgo</a></li>
+        <li><a href="index.html#storia">Storia</a></li>
+        <li><a href="index.html#gallery">Galleria</a></li>
+        <li><a href="index.html#territorio">Territorio</a></li>
+        <li><a href="index.html#map">Mappa</a></li>
+        <li><a href="index.html#contact">Contatti</a></li>
+      </ul>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <img
+      class="page-hero__bg"
+      src="images/rocchetta_hero.jpg"
+      alt="Panorama della vallata di Rocchetta Sandri dall'Appennino"
+    />
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Rocchetta Sandri</a>
+          <span>›</span>
+          <a href="index.html#territorio">Territorio</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.75)">La Rocca Medievale</span>
+        </nav>
+        <h1 class="page-hero__title">La Rocca Medievale</h1>
+        <p class="page-hero__subtitle">Castrum Scoplano — Un presidio longobardo che controllava la valle — Dal 753 al 1535</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main>
+    <section class="section section--light">
+      <div class="container">
+        <div class="article-layout">
+
+          <!-- Article body -->
+          <article class="article-body reveal">
+
+            <h2>Il Nome e l'Origine di Rocchetta</h2>
+            <p>
+              Il nome <strong>"Rocchetta"</strong> deriva probabilmente dall'antica presenza di una rocca militare, poi distrutta e di cui rimase, per l'appunto, una rocca piccola — la cosiddetta "rocchetta". Non è un semplice diminutivo, ma il ricordo toponomastico di una ricostruzione parziale, di una rinascita dopo la distruzione.
+            </p>
+            <p>
+              Anticamente la Rocca di Rocchetta Sandri era detta <strong>di Scoplano</strong> (o di Sclopano). È un nome che rimanda alla geografia della vallata, ai confini del territorio che controllava. E per la prima volta, se ne parla nel <strong>Diploma di Astolfo del 753 d.C.</strong> — lo stesso documento con il quale il re dei Longobardi donava all'Abbazia di Nonantola il Castrum Sextulae (Sestola) e i territori adiacenti.
+            </p>
+
+            <div class="highlight-box">
+              <p>«La rocca non è semplicemente una costruzione militare perduta nel tempo: è il fondamento della memoria del paese, il suo nome stesso.»</p>
+            </div>
+
+            <h2>Un Presidio Strategico Longobardo</h2>
+            <p>
+              Quando nel <strong>568 d.C.</strong> scendevano in Italia i Longobardi, dopo una lunga serie di battaglie combattute anche presso il fiume Scoltenna, a presidio della strada che scendeva in Toscana rimanevano due fortezze fondamentali: il <strong>Castrum Sextulae</strong> (Sestola) e il <strong>Castrum Scoplano</strong> (Rocchetta). Entrambe resistettero fino al 728, mantenendo il controllo dell'area per oltre 150 anni.
+            </p>
+            <p>
+              Quest'ultimo, il Castrum Scoplano, <strong>godeva di un'ottima posizione strategica</strong>. Grazie alla sua collocazione su un pianoro panoramico, permetteva di controllare l'ampia vallata che si estendeva ai suoi piedi, verso il fiume Scoltenna e la pianura. Un dominio visivo totale: chiunque si muovesse nella vallata sottostante era sotto gli occhi del presidio.
+            </p>
+
+            <h2>La Perdita dell'Autonomia nel 1406</h2>
+            <p>
+              Per secoli, Rocchetta Sandri mantenne la sua autonomia come comune indipendente. Tutto cambiò con le guerre che caratterizzarono l'Emilia medievale. Il paese subì le conseguenze della guerra tra <strong>Obizzo di Montegarullo</strong> e gli <strong>Estensi</strong>.
+            </p>
+            <p>
+              Nel <strong>1406</strong>, gli Estensi unirono Rocchetta Sandri alla provincia del Frignano, togliendole la lunga storia di comune autonomo di cui aveva goduto sino ad allora. Fu in questo stesso periodo che il borgo assunse il cognome <strong>Sandri</strong> — dalla famiglia più importante e influente del luogo — per distinguersi da altri centri denominati semplicemente "Rocchetta".
+            </p>
+
+            <h2>La Distruzione del 1535 e la "Rocchetta"</h2>
+            <p>
+              Molto scarse sono le notizie dirette che riguardano la rocca stessa. Tuttavia, un episodio è così importante da essere rimasto nella memoria del luogo: l'evento del <strong>1535</strong>.
+            </p>
+            <p>
+              Quel anno, il commissario ducale <strong>Zanelli</strong> ordinò una rappresaglia brutale. Vari abitanti di Rocchetta aveva partecipato al <strong>Sacco di Sestola</strong> ad opera dei Tanari — un'azione militare che aveva turbato gli assetti politici della zona. La punizione fu esemplare: Zanelli fece <strong>spianare la rocca</strong>, diroccare alcune case e con esse anche la Chiesa.
+            </p>
+            <p>
+              Ma questa volta, la rocca non scomparve completamente. Venne <strong>ricostruita in parte</strong>, dando origine al nomignolo "Rocchetta" che sopravvive fino ad oggi. Non è più la rocca grande e importante dei Longobardi: è la piccola rocca, la rocca-residua, ricordo di una grandezza passata e di una resilienza presente.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">🏰</span>
+                <div class="feature-list__text">
+                  <h4>Presidio militare strategico</h4>
+                  <p>Controllava visivamente l'intera vallata dello Scoltenna, punto cruciale per i transiti verso la Toscana durante l'epoca longobarda.</p>
+                </div>
+              </div>
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">📜</span>
+                <div class="feature-list__text">
+                  <h4>Prima menzione documentata: 753 d.C.</h4>
+                  <p>Il Diploma di Astolfo cita il Castrum Scoplano come possedimento dell'Abbazia di Nonantola, testimonianza più antica del nome.</p>
+                </div>
+              </div>
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">⚔️</span>
+                <div class="feature-list__text">
+                  <h4>Perdita dell'autonomia nel 1406</h4>
+                  <p>L'annessione agli Estensi segna la fine della storia di comune indipendente e l'adozione del cognome "Sandri".</p>
+                </div>
+              </div>
+              <div class="feature-list__item reveal">
+                <span class="feature-list__icon">💔</span>
+                <div class="feature-list__text">
+                  <h4>La Rocchetta: rinascita dal 1535</h4>
+                  <p>La ricostruzione parziale dopo la distruzione di Zanelli trasforma il nome da ricordo di grandezza a simbolo di resilienza.</p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Eredità Contemporanea: Tracce Invisibili</h2>
+            <p>
+              Dell'antica costruzione non rimangono tracce visibili oggi. Ciò non è dovuto solo al passare dei secoli, ma anche alla struttura stessa del borgo. Non esiste un vero e proprio centro storico consolidato, come in molti altri paesi appenninici. Rocchetta Sandri si sviluppa piuttosto in <strong>vari gruppi di casolari</strong> sparsi sul pianoro, senza un nucleo urbano compatto.
+            </p>
+            <p>
+              Eppure la rocca rimane presente: nel nome stesso del luogo, nelle memoria tramandata dalle generazioni, nella consapevolezza che il terreno su cui il borgo sorge era una volta sorvegliato da mura e presidi. È un'eredità immateriale, ma profondamente radicata nell'identità di Rocchetta Sandri.
+            </p>
+
+            <a href="index.html#territorio" class="back-link">← Torna a Cosa Scoprire</a>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="article-sidebar">
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">⏰ Cronologia</div>
+              <div class="sidebar-card__body">
+                <div class="timeline-mini">
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">753 d.C.</span>
+                    <span class="timeline-mini__text">Prima menzione nel Diploma di Astolfo</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">568–728</span>
+                    <span class="timeline-mini__text">Presidio longobardo attivo</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1406</span>
+                    <span class="timeline-mini__text">Annessione agli Estensi</span>
+                  </div>
+                  <div class="timeline-mini__item">
+                    <span class="timeline-mini__year">1535</span>
+                    <span class="timeline-mini__text">Distruzione e ricostruzione parziale</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🏷️ Elementi chiave</div>
+              <div class="sidebar-card__body">
+                <span class="detail-chip">Castrum Scoplano</span>
+                <span class="detail-chip">Longobardi</span>
+                <span class="detail-chip">753 d.C.</span>
+                <span class="detail-chip">Presidio medievale</span>
+                <span class="detail-chip">Vallata Scoltenna</span>
+                <span class="detail-chip">Commissario Zanelli</span>
+                <span class="detail-chip">Ricostruzione 1535</span>
+                <span class="detail-chip">Toponimia</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">📍 Posizione</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  Rocchetta Sandri sorge su un pianoro panoramico a circa 660 m s.l.m., con vista sulla vallata dello Scoltenna. Posizione strategica ideale per il controllo dei transiti verso la Toscana.
+                </p>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">📚 Riferimenti storici</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.82rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  <strong>Diploma di Astolfo</strong> (753 d.C.) — documento che cita il Castrum Scoplano e la donazione all'Abbazia di Nonantola.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Frazione di Sestola (MO).</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="index.html#top" class="footer__back">↑ Torna su</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* Navbar */
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.navbar__links');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
