@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagra di Santa Eurosia – Rocchetta Sandri</title>
+  <meta name="description" content="La Sagra di Santa Eurosia a Rocchetta Sandri: una delle feste estive più tradizionali dell'Appennino modenese con specialità gastronomiche, musica dal vivo e celebrazioni religiose." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page-specific styles ── */
+    .page-hero {
+      position: relative;
+      height: 56vh;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--stone);
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+    }
+    .page-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(43,35,24,.92) 0%,
+        rgba(43,35,24,.3) 60%,
+        transparent 100%
+      );
+      z-index: 1;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 0;
+      width: 100%;
+    }
+    .page-hero__content .container {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+    }
+    .breadcrumb a {
+      color: var(--gold-light);
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: rgba(255,255,255,.35); }
+    .page-hero__title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .page-hero__subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+    }
+
+    /* ── Article layout ── */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3.5rem;
+      align-items: start;
+      padding: 4rem 0;
+    }
+    .article-body h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: var(--stone);
+      margin: 2rem 0 .75rem;
+      padding-top: .5rem;
+      border-top: 2px solid var(--gold);
+      display: inline-block;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p {
+      font-family: var(--font-body);
+      color: var(--stone-mid);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .article-body strong { color: var(--stone); font-weight: 600; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-style: italic;
+      color: var(--stone);
+      font-size: .97rem;
+    }
+
+    /* ── Feature grid ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .feature-box {
+      background: rgba(232,160,32,.08);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border-left: 4px solid var(--gold);
+    }
+    .feature-box h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--terra);
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .feature-box p {
+      font-size: .95rem;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    /* ── Sidebar ── */
+    .article-sidebar {
+      position: sticky;
+      top: 76px;
+    }
+    .sidebar-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card__header {
+      background: linear-gradient(135deg, var(--gold), var(--terra));
+      padding: 1rem 1.25rem;
+      color: var(--white);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .sidebar-card__body {
+      padding: 1.25rem;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(43,35,24,.07);
+      font-size: .88rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row__label { color: var(--stone-light); font-weight: 600; }
+    .info-row__value { color: var(--stone); text-align: right; max-width: 60%; }
+
+    .detail-chip {
+      display: inline-block;
+      padding: .3rem .75rem;
+      background: rgba(232,160,32,.15);
+      color: var(--terra);
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin: .25rem .2rem 0 0;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--terra);
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: 3rem;
+      padding: .6rem 1.25rem;
+      border: 2px solid var(--terra);
+      border-radius: 50px;
+      transition: background .2s, color .2s;
+    }
+    .back-link:hover {
+      background: var(--terra);
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="index.html#about">Il borgo</a></li>
+        <li><a href="index.html#storia">Storia</a></li>
+        <li><a href="index.html#gallery">Galleria</a></li>
+        <li><a href="index.html#territorio">Territorio</a></li>
+        <li><a href="index.html#map">Mappa</a></li>
+        <li><a href="index.html#contact">Contatti</a></li>
+      </ul>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <img
+      class="page-hero__bg"
+      src="images/eurosia.jpg"
+      alt="La Sagra di Santa Eurosia a Rocchetta Sandri"
+    />
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Rocchetta Sandri</a>
+          <span>›</span>
+          <a href="index.html#territorio">Territorio</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.75)">Sagra di Santa Eurosia</span>
+        </nav>
+        <h1 class="page-hero__title">Sagra di Santa Eurosia</h1>
+        <p class="page-hero__subtitle">La festa estiva più tradizionale dell'Appennino modenese — Musica, gastronomia e celebrazioni religiose</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main>
+    <section class="section section--light">
+      <div class="container">
+        <div class="article-layout">
+
+          <!-- Article body -->
+          <article class="article-body reveal">
+
+            <h2>Una Festa Radicata nella Tradizione</h2>
+            <p>
+              La <strong>Sagra di Santa Eurosia</strong> a Rocchetta Sandri è una delle feste estive più tradizionali e amate dell'Appennino Modenese. Celebrata come festa patronale, unisce la devozione religiosa locale alla buona cucina montanara e al divertimento per tutte le età.
+            </p>
+            <p>
+              Tradizionalmente si tiene durante il <strong>primo fine settimana di luglio</strong>, trasformando il campo sportivo di Rocchetta Sandri in un luogo di aggregazione dove la comunità si ritrova per celebrare insieme il proprio patrimonio culturale e gastronomico. L'evento rappresenta il cuore pulsante della vita sociale del piccolo borgo appenninico.
+            </p>
+
+            <div class="highlight-box">
+              <p>«La Sagra di Santa Eurosia non è solo una festa: è la memoria viva della comunità, il ricordo tramandato di generazione in generazione, celebrato con il cibo, la musica e la fede.»</p>
+            </div>
+
+            <h2>Lo Stand Gastronomico: Il Cuore della Festa</h2>
+            <p>
+              Il punto forte dell'evento è lo <strong>stand gastronomico</strong>, dove si possono gustare le specialità tipiche della zona. Le crescentine, i borlenghi, lo gnocco fritto e la polenta rappresentano i piatti tradizionali dell'Appennino modenese, accompagnati da grigliate di carne.
+            </p>
+            <p>
+              L'evento prevede <strong>serate speciali dedicate alla fiorentina alla brace</strong>, dove la qualità della carne e la tradizione culinaria appenninica si incontrano nel modo più autentico. Tutto è accompagnato da vino e birra a volontà, per un'esperienza gastronomica completa.
+            </p>
+            <p>
+              Questi piatti non sono semplici cibo: sono la rappresentazione tangibile della cultura e della tradizione agricola e pastorale di Rocchetta Sandri. Ogni preparazione richiede competenza e dedizione, eredità di una sapienza culinaria tramandata nei secoli.
+            </p>
+
+            <h2>Intrattenimento per Tutte le Sere</h2>
+            <p>
+              Tutte le sere della sagra sono animate da <strong>musica dal vivo</strong>, orchestrazioni di liscio tradizionale che riportano alla memoria i balli dei tempi passati, e DJ set per i giovani che amano il ritmo contemporaneo.
+            </p>
+            <p>
+              Gli eventi notturni includono <strong>cocktail party</strong> che durano fino a tarda notte, creando un'atmosfera di festa e convivialità. È l'occasione per ballare, ridere e stare insieme, trasformando la piccola frazione in un centro di aggregazione dove le generazioni si mescolano intorno alla musica e alla tradizione.
+            </p>
+
+            <h2>Un'Esperienza per Tutta la Famiglia</h2>
+
+            <div class="features-grid">
+              <div class="feature-box">
+                <h4>👶 Per i Bambini</h4>
+                <p>Sono sempre presenti giochi e giostre dedicate ai più piccoli, come gonfiabili e altre attrazioni che rendono la festa un evento accessibile a tutte le fasce d'età.</p>
+              </div>
+              <div class="feature-box">
+                <h4>⛪ Celebrazioni Religiose</h4>
+                <p>Trattandosi della festa patronale, la domenica si tengono le funzioni solenni con la Santa Messa presso la chiesa parrocchiale e la recita del Santo Rosario in memoria della santa protettrice.</p>
+              </div>
+            </div>
+
+            <h2>Santa Eurosia: La Protettrice del Borgo</h2>
+            <p>
+              <strong>Santa Eurosia</strong> è la santa protettrice di Rocchetta Sandri. La scelta di questa santa come patrona del borgo non è casuale: Eurosia era una santa abadessa che rappresenta virtù come la generosità, la dedizione e la protezione della comunità.
+            </p>
+            <p>
+              La festa è l'occasione per celebrare non solo la santa, ma anche l'identità del borgo stesso, le sue radici storiche e culturali. È una manifestazione di fede popolare che affonda le sue radici nella storia medievale e che continua a vivere nel cuore della comunità rocchettese.
+            </p>
+
+            <h2>Un Evento da Non Perdere</h2>
+            <p>
+              La Sagra di Santa Eurosia rappresenta il momento culminante dell'estate appenninica. È l'occasione perfetta per scoprire Rocchetta Sandri, assaggiare la vera cucina montanara, ballare al ritmo della musica tradizionale e conoscere una comunità che ha preservato le sue tradizioni nel corso dei secoli.
+            </p>
+            <p>
+              Che siate appassionati di gastronomia, amanti della musica tradizionale o semplici cercatori di autenticità, la Sagra di Santa Eurosia vi farà sentire parte di una storia che affonda le radici nei secoli, celebrata ogni anno come se fosse la prima volta.
+            </p>
+
+            <a href="index.html#territorio" class="back-link">← Torna a Cosa Scoprire</a>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="article-sidebar">
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">📅 Data e Luogo</div>
+              <div class="sidebar-card__body">
+                <div class="info-row">
+                  <span class="info-row__label">Periodo</span>
+                  <span class="info-row__value">Primo fine settimana luglio</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">Luogo</span>
+                  <span class="info-row__value">Campo sportivo di Rocchetta Sandri</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-row__label">2026</span>
+                  <span class="info-row__value">Dal 3 luglio</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🍽️ Specialità Gastronomiche</div>
+              <div class="sidebar-card__body">
+                <span class="detail-chip">Crescentine</span>
+                <span class="detail-chip">Borlenghi</span>
+                <span class="detail-chip">Gnocco fritto</span>
+                <span class="detail-chip">Polenta</span>
+                <span class="detail-chip">Grigliate di carne</span>
+                <span class="detail-chip">Fiorentina</span>
+                <span class="detail-chip">Vini locali</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">🎵 Intrattenimento</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.5rem; line-height:1.6;">
+                  <strong>Tutte le sere:</strong> Musica dal vivo, orchestre di liscio, DJ set
+                </p>
+                <p style="font-size:.9rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  <strong>Notti:</strong> Cocktail party fino a tarda notte
+                </p>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">👨‍👩‍👧‍👦 Attività per Famiglie</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.5rem; line-height:1.6;">
+                  ✓ Giochi per bambini
+                </p>
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.5rem; line-height:1.6;">
+                  ✓ Giostre e gonfiabili
+                </p>
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  ✓ Divertimento per tutte le età
+                </p>
+              </div>
+            </div>
+
+            <div class="sidebar-card reveal">
+              <div class="sidebar-card__header">⛪ Celebrazioni Religiose</div>
+              <div class="sidebar-card__body">
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin-bottom:.5rem; line-height:1.6;">
+                  <strong>Domenica:</strong> Santa Messa solenne
+                </p>
+                <p style="font-size:.88rem; color:var(--stone-mid); font-family:var(--font-body); margin:0; line-height:1.6;">
+                  <strong>Domenica:</strong> Recita del Santo Rosario
+                </p>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Frazione di Sestola (MO).</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="index.html#top" class="footer__back">↑ Torna su</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    /* Navbar */
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.navbar__links');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
