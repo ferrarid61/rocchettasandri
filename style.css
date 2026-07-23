@@ -226,6 +226,35 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   color:var(--stone);
 }
 
+/* Language switcher (flags) */
+.navbar__lang {
+  display:flex;
+  align-items:center;
+  gap:.35rem;
+  margin-left:.5rem;
+}
+.navbar__lang a,
+.navbar__lang-current {
+  font-size:1.15rem;
+  line-height:1;
+  padding:.15rem .25rem;
+  border-radius:4px;
+  transition:transform var(--transition-fast), opacity var(--transition-fast);
+  text-decoration:none;
+}
+.navbar__lang a:hover { transform:scale(1.18); }
+.navbar__lang-current {
+  opacity:.4;
+  cursor:default;
+  filter:grayscale(.35);
+}
+.navbar__lang-sep {
+  color:var(--stone-light);
+  opacity:.4;
+  font-size:.9rem;
+  user-select:none;
+}
+
 /* ── SECTIONS ─────────────────────────────────────────────── */
 .section { padding:5rem 0; }
 .section--light { background:var(--cream); }

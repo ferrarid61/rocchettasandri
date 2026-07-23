@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocchetta Sandri – The Village of the Modenese Apennines</title>
+  <meta name="description" content="Discover Rocchetta Sandri, a historic village in the Modenese Apennines, part of the municipality of Sestola. Landscapes, history, traditions and an interactive map." />
+  <meta property="og:title" content="Rocchetta Sandri – The Village of the Modenese Apennines" />
+  <meta property="og:description" content="Discover Rocchetta Sandri: history, landscapes and traditions in the Modenese Apennines." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="it_IT" />
+  <link rel="alternate" hreflang="it" href="../index.html" />
+  <link rel="alternate" hreflang="en" href="index.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- ── HERO ────────────────────────────────── -->
+  <header class="hero" id="top">
+    <div class="hero__overlay"></div>
+    <img
+      class="hero__bg"
+      src="../images/rocchetta_hero.jpg"
+      srcset="../images/rocchetta_hero_small.jpg 640w, ../images/rocchetta_hero_medium.jpg 1024w, ../images/rocchetta_hero.jpg 1600w"
+      sizes="100vw"
+      alt="Panorama of the village of Rocchetta Sandri among the woods of the Modenese Apennines"
+      fetchpriority="high"
+    />
+    <div class="hero__content">
+      <span class="hero__badge">Modenese Apennines</span>
+      <h1 class="hero__title">Rocchetta Sandri</h1>
+      <p class="hero__subtitle">An ancient village among woods and history, on the slopes of Monte Cimone</p>
+      <a href="#about" class="btn btn--primary">Discover the village</a>
+    </div>
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </header>
+
+  <!-- ── NAVBAR ──────────────────────────────── -->
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="#top" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="#about">The village</a></li>
+        <li><a href="#storia">History</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#territorio">Heritage</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="#contact">Contacts</a></li>
+      </ul>
+      <div class="navbar__lang" aria-label="Language switcher">
+        <span class="navbar__lang-current" aria-label="English (current language)">🇬🇧</span>
+        <span class="navbar__lang-sep">·</span>
+        <a href="../index.html" aria-label="Italiano" lang="it">🇮🇹</a>
+      </div>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── ABOUT ───────────────────────────────── -->
+    <section id="about" class="section section--light">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <span class="section-badge">About us</span>
+            <h2>The Heart of the Apennines</h2>
+            <p>
+              Rocchetta Sandri is a small hamlet of the municipality of <strong>Sestola</strong>, set in the Modenese Apennines at about 660 metres above sea level. The village stands on a panoramic plateau, surrounded by chestnut and beech woods, with views over the peaks of the Tuscan-Emilian Apennines.
+            </p>
+            <p>
+              The name <em>Rocchetta</em> evokes the ancient presence of a small military fortress, already mentioned in <strong>753 AD</strong> in a diploma of the Lombard king Astolfo. The toponym <em>Sandri</em> was added later, in honour of the most prominent local family.
+            </p>
+            <div class="about-stats">
+              <div class="stat-card">
+                <span class="stat-number">660m</span>
+                <span class="stat-label">Altitude</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">753</span>
+                <span class="stat-label">First historical mention</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">MO</span>
+                <span class="stat-label">Province of Modena</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-image reveal">
+            <img
+              src="../images/oratorio.jpg"
+              alt="The oratory of Rocchetta Sandri, a small religious building in local stone"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HISTORY ──────────────────────────────── -->
+    <section id="storia" class="section section--warm">
+      <div class="container">
+        <span class="section-badge reveal">History</span>
+        <h2 class="section-title reveal">Centuries of Memory</h2>
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">568 AD – Middle Ages</span>
+              <h3>Lombard Garrison</h3>
+              <p>When the Lombards descend into Italy, the <em>Castrum Scoplano</em> holds out, together with Sestola, until 728. Its panoramic position overlooking the Scoltenna valley makes it a fundamental strategic control point for transit towards Tuscany.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">753 AD</span>
+              <h3>Castrum Scoplano</h3>
+              <p>The Lombard king Astolfo mentions the <em>Castrum Scoplano</em> in a royal diploma — the same one by which he donated the Castrum Sextulae and the surrounding territories to the Abbey of Nonantola. It is the first written testimony of the settlement that would give rise to Rocchetta Sandri.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1406</span>
+              <h3>End of the Independent Municipality</h3>
+              <p>After the wars between Obizzo di Montegarullo and the Estensi, the village is annexed to the province of the Frignano, losing its long history as an independent municipality. The name <em>Sandri</em> is added in honour of the most important local family.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1535</span>
+              <h3>Destruction and Rebirth</h3>
+              <p>The ducal commissioner Zanelli orders the fortress to be razed, some houses and the church torn down, as retaliation for the inhabitants' participation in the Sack of Sestola by the Tanari family. The fortress is, however, partially rebuilt, giving rise to the nickname <em>Rocchetta</em> which survives to this day.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">Modern Era</span>
+              <h3>A Farming Community</h3>
+              <p>The village becomes a thriving agricultural centre, known for the production of milk and Parmigiano-Reggiano and for local artisan traditions. No visible traces of the ancient fortress remain: the village develops in several groups of farmhouses without a consolidated historic centre.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">Today</span>
+              <h3>Tourism and Traditions</h3>
+              <p>Rocchetta Sandri is a destination for hikers and nature lovers. The Festival of Saint Eurosia and the Modenese crescentine remain living traditions that enliven the community every year.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GALLERY ─────────────────────────────── -->
+    <section id="gallery" class="section section--light">
+      <div class="container">
+        <span class="section-badge reveal">Photographs</span>
+        <h2 class="section-title reveal">Image Gallery</h2>
+        <p class="section-subtitle reveal">Images from the village and the traditions of the Modenese Apennines.</p>
+        <div class="gallery" role="list">
+
+          <a class="gallery-item reveal" role="listitem"
+             href="../images/rocchetta_hero.jpg"
+             data-caption="Historical panorama of Rocchetta Sandri – aerial view of the village (vintage photo)">
+            <img src="../images/rocchetta_hero.jpg"
+                 alt="Historical aerial view of the village of Rocchetta Sandri surrounded by the green of the Apennines" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>Historical Panorama</span>
+            </div>
+          </a>
+
+          <a class="gallery-item reveal" role="listitem"
+             href="../images/chiesa.jpg"
+             data-caption="Church of San Giovanni Battista – external view of the tower in local stone">
+            <img src="../images/chiesa.jpg"
+                 alt="External facade of the Church of San Giovanni Battista in Rocchetta Sandri" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>The Parish Church</span>
+            </div>
+          </a>
+
+          <a class="gallery-item reveal" role="listitem"
+             href="../images/internooratorio.jpg"
+             data-caption="Inside the oratory – the most important place of worship in Rocchetta, in memory of the vow of 170 years ago">
+            <img src="../images/internooratorio.jpg"
+                 alt="Interior of the Oratory of Rocchetta Sandri" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>Oratory Interior</span>
+            </div>
+          </a>
+
+          <a class="gallery-item reveal" role="listitem"
+             href="../images/fuoco.jpg"
+             data-caption="Heating the tigelle – the tigelle are warmed over the open flame before being stacked between a disc of dough and another. Judging the ideal temperature is at the heart of the handed-down tradition.">
+            <img src="../images/fuoco.jpg"
+                 alt="Heating the tigelle over the fire" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>Tigelle heating</span>
+            </div>
+          </a>
+
+          <a class="gallery-item reveal" role="listitem"
+             href="../images/crescenti.jpg"
+             data-caption="Modenese crescentine – not to be confused with the tigella, which is the baking tool. To be enjoyed with cured meats or the typical pesto of lard, garlic and rosemary.">
+            <img src="../images/crescenti.jpg"
+                 alt="Crescentine cooked on tigelle, served on a board with typical Modenese cured meats or mountain pesto" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>Crescentine</span>
+            </div>
+          </a>
+
+          <a class="gallery-item reveal" role="listitem"
+             href="../images/oratorio.jpg"
+             data-caption="The oratory of Rocchetta Sandri – one of the oldest places of worship in the hamlet">
+            <img src="../images/oratorio.jpg"
+                 alt="Historic oratory of Rocchetta Sandri, small religious building in stone from the Modenese Apennines" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span>The Oratory</span>
+            </div>
+          </a>
+
+        </div>
+        <p class="gallery-note reveal">Historical photos: private archive. The photographs are property of their respective authors.</p>
+      </div>
+    </section>
+
+    <!-- ── HERITAGE ──────────────────────────── -->
+    <section id="territorio" class="section section--dark">
+      <div class="container">
+        <span class="section-badge reveal">Heritage</span>
+        <h2 class="section-title reveal" style="color:#fff;">What to Discover</h2>
+        <div class="cards-grid">
+          <a href="oratorio.html" class="feature-card reveal" style="display:block; text-decoration:none;">
+            <div class="feature-card__icon">⛪</div>
+            <h3>Oratory of the Madonna del Voto</h3>
+            <p>A sanctuary of devotion since 1631. The community's vow during the 1855 cholera epidemic and the annual celebration on the last Sunday of September.</p>
+            <span style="display:inline-block; margin-top:.75rem; font-size:.82rem; font-weight:700; color:var(--gold-light); letter-spacing:.04em;">Discover →</span>
+          </a>
+          <a href="rocca.html" class="feature-card reveal" style="display:block; text-decoration:none;">
+            <div class="feature-card__icon">🏰</div>
+            <h3>The Medieval Fortress</h3>
+            <p>Castrum Scoplano, the Lombard garrison that controlled the valley. From the Diploma of Astolfo (753) to the traces of 1535.</p>
+            <span style="display:inline-block; margin-top:.75rem; font-size:.82rem; font-weight:700; color:var(--gold-light); letter-spacing:.04em;">Discover →</span>
+          </a>
+          <a href="chiesa.html" class="feature-card reveal" style="display:block; text-decoration:none;">
+            <div class="feature-card__icon">⛪</div>
+            <h3>Church of San Giovanni Battista</h3>
+            <p>The spiritual heart of the village, with its sober architecture in local stone and an oratory dedicated to the Madonna del Voto.</p>
+            <span style="display:inline-block; margin-top:.75rem; font-size:.82rem; font-weight:700; color:var(--gold-light); letter-spacing:.04em;">Discover →</span>
+          </a>
+          <a href="parmigiano.html" class="feature-card reveal" style="display:block; text-decoration:none;">
+            <div class="feature-card__icon">🧀</div>
+            <h3>Mountain Parmigiano-Reggiano</h3>
+            <p>The cheese-making tradition of the Modenese Apennines: mountain milk, maturing, and the Caseificio Santa Lucia in Sestola.</p>
+            <span style="display:inline-block; margin-top:.75rem; font-size:.82rem; font-weight:700; color:var(--gold-light); letter-spacing:.04em;">Discover →</span>
+          </a>
+          <a href="sagra.html" class="feature-card reveal" style="display:block; text-decoration:none;">
+            <div class="feature-card__icon">🎉</div>
+            <h3>Festival of Saint Eurosia</h3>
+            <p>The most traditional summer festival of the Modenese Apennines: authentic gastronomy, live music and religious celebrations on the first weekend of July.</p>
+            <span style="display:inline-block; margin-top:.75rem; font-size:.82rem; font-weight:700; color:var(--gold-light); letter-spacing:.04em;">Discover →</span>
+          </a>
+          <a href="crescentine.html" class="feature-card reveal" style="display:block; text-decoration:none;">
+            <div class="feature-card__icon">🥞</div>
+            <h3>Mountain Crescentine</h3>
+            <p>The traditional bread of the Modenese Apennines, cooked on tigelle. Discover the real difference between crescentina and tigella — a food and cultural battle.</p>
+            <span style="display:inline-block; margin-top:.75rem; font-size:.82rem; font-weight:700; color:var(--gold-light); letter-spacing:.04em;">Discover →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MAP ────────────────────────────────── -->
+    <section id="map" class="section section--light">
+      <div class="container">
+        <span class="section-badge reveal">Location</span>
+        <h2 class="section-title reveal">Where We Are</h2>
+        <p class="section-subtitle reveal">Rocchetta Sandri, hamlet of Sestola (MO) – Modenese Apennines</p>
+        <div id="mapid" class="reveal" role="region" aria-label="Interactive map of Rocchetta Sandri"></div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ────────────────────────────── -->
+    <section id="contact" class="section section--warm">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <span class="section-badge">Contacts</span>
+          <h2>Come Visit Us</h2>
+          <p>Rocchetta Sandri awaits you in every season: snow in winter, flowers in spring, the cool of the woods in summer and the colours of autumn foliage.</p>
+          <ul class="contact-list">
+            <li>📍 Rocchetta Sandri, Sestola (MO), Emilia-Romagna</li>
+            <li>✉️ <a href="mailto:turismo@comune.sestola.mo.it">turismo@comune.sestola.mo.it</a></li>
+            <li>🌐 Municipality of Sestola – Province of Modena</li>
+          </ul>
+        </div>
+        <div class="contact-cta reveal">
+          <p>For information on hikes, accommodation and local events:</p>
+          <a href="mailto:turismo@comune.sestola.mo.it" class="btn btn--primary">Write to us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – Hamlet of Sestola (MO).</p>
+      <nav class="footer__links" aria-label="Useful links">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Municipality of Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="https://www.appenninomodenese.it" target="_blank" rel="noopener">Modenese Apennines</a>
+        <a href="#top" class="footer__back">↑ Back to top</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close gallery">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <div class="lightbox__inner">
+      <img src="" alt="" id="lightbox-img" />
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">&#8250;</button>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
