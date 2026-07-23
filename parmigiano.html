@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parmigiano-Reggiano di Montagna – Rocchetta Sandri</title>
   <meta name="description" content="Il Parmigiano-Reggiano di Montagna di Rocchetta Sandri: produzione tradizionale, latte di montagna e stagionatura nel Caseificio Santa Lucia di Sestola." />
+  <meta property="og:title" content="Parmigiano-Reggiano di Montagna – Rocchetta Sandri" />
+  <meta property="og:description" content="La tradizione casearia dell'Appennino modenese: latte di montagna, stagionatura e la storia del Caseificio Santa Lucia di Sestola — dal 1955." />
+  <meta property="og:image" content="images/parmigiano.jpg" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="it_IT" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,115 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
   <style>
-    /* ── Page-specific styles ── */
-    .page-hero {
-      position: relative;
-      height: 56vh;
-      min-height: 380px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      background: var(--stone);
-    }
-    .page-hero__bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.55;
-    }
-    .page-hero__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(43,35,24,.92) 0%,
-        rgba(43,35,24,.3) 60%,
-        transparent 100%
-      );
-      z-index: 1;
-    }
-    .page-hero__content {
-      position: relative;
-      z-index: 2;
-      padding: 3rem 0;
-      width: 100%;
-    }
-    .page-hero__content .container {
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-    }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: .82rem;
-      color: rgba(255,255,255,.55);
-    }
-    .breadcrumb a {
-      color: var(--gold-light);
-      transition: color .2s;
-    }
-    .breadcrumb a:hover { color: var(--white); }
-    .breadcrumb span { color: rgba(255,255,255,.35); }
-    .page-hero__title {
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.1;
-    }
-    .page-hero__subtitle {
-      font-family: var(--font-body);
-      font-style: italic;
-      color: rgba(255,255,255,.7);
-      font-size: 1rem;
-    }
-
-    /* ── Article layout ── */
-    .article-layout {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 3.5rem;
-      align-items: start;
-      padding: 4rem 0;
-    }
-    .article-body h2 {
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 700;
-      color: var(--stone);
-      margin: 2rem 0 .75rem;
-      padding-top: .5rem;
-      border-top: 2px solid var(--gold);
-      display: inline-block;
-    }
-    .article-body h2:first-child { margin-top: 0; }
-    .article-body p {
-      font-family: var(--font-body);
-      color: var(--stone-mid);
-      font-size: 1.02rem;
-      line-height: 1.85;
-      margin-bottom: 1.25rem;
-    }
-    .article-body strong { color: var(--stone); font-weight: 600; }
-
-    .highlight-box {
-      background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
-      border-left: 4px solid var(--gold);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      padding: 1.25rem 1.5rem;
-      margin: 2rem 0;
-    }
-    .highlight-box p {
-      margin: 0;
-      font-style: italic;
-      color: var(--stone);
-      font-size: .97rem;
-    }
-
-    /* ── Process steps ── */
+    /* Page-specific: process steps */
     .process-steps {
       display: flex;
       flex-direction: column;
@@ -154,77 +53,6 @@
     .process-step__content p {
       font-size: .95rem;
       margin: 0;
-    }
-
-    /* ── Sidebar ── */
-    .article-sidebar {
-      position: sticky;
-      top: 76px;
-    }
-    .sidebar-card {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-    }
-    .sidebar-card__header {
-      background: linear-gradient(135deg, var(--gold), var(--terra));
-      padding: 1rem 1.25rem;
-      color: var(--white);
-      font-weight: 700;
-      font-size: .9rem;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-    .sidebar-card__body {
-      padding: 1.25rem;
-    }
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: .55rem 0;
-      border-bottom: 1px solid rgba(43,35,24,.07);
-      font-size: .88rem;
-    }
-    .info-row:last-child { border-bottom: none; }
-    .info-row__label { color: var(--stone-light); font-weight: 600; }
-    .info-row__value { color: var(--stone); text-align: right; max-width: 60%; }
-
-    .detail-chip {
-      display: inline-block;
-      padding: .3rem .75rem;
-      background: rgba(232,160,32,.15);
-      color: var(--terra);
-      border-radius: 50px;
-      font-size: .78rem;
-      font-weight: 700;
-      margin: .25rem .2rem 0 0;
-    }
-
-    /* ── Back link ── */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      color: var(--terra);
-      font-weight: 600;
-      font-size: .9rem;
-      margin-bottom: 3rem;
-      padding: .6rem 1.25rem;
-      border: 2px solid var(--terra);
-      border-radius: 50px;
-      transition: background .2s, color .2s;
-    }
-    .back-link:hover {
-      background: var(--terra);
-      color: var(--white);
-    }
-
-    @media (max-width: 900px) {
-      .article-layout { grid-template-columns: 1fr; }
-      .article-sidebar { position: static; }
     }
   </style>
 </head>
@@ -292,18 +120,18 @@
 
             <h2>Il Caseificio Santa Lucia: Una Storia di Tradizione</h2>
             <p>
-              Nel <strong>1955</strong>, il Signor Negus insieme ai due figli casari Averardo e Michele Cerfogli apre un piccolo Caseificio privato che acquistava il latte dai contadini della zona di Sestola. Il Caseificio venne chiamato <strong>Santa Lucia</strong> come segno di buon auspicio: era infatti tradizione contadina affidarsi ai santi per avere buona sorte.
+              Nel <strong>1955</strong>, il signor Negus insieme ai due figli casari Averardo e Michele Cerfogli apre un piccolo caseificio privato che acquistava il latte dai contadini della zona di Sestola. Il caseificio venne chiamato <strong>Santa Lucia</strong> come segno di buon auspicio: era infatti tradizione contadina affidarsi ai santi per avere buona sorte.
             </p>
             <p>
               Nel <strong>1962</strong> il caseificio diventa una cooperativa agricola che unisce i tanti piccoli agricoltori che lavoravano nella zona. Negli anni '70 i soci fondatori si dividono formando due cooperative. Nacque così la cooperativa Santa Eurosia (anche conosciuta come il Caseificio Nuovo) in onore della santa protettrice del piccolo paese, mentre il Caseificio Santa Lucia rimase immutato nel nome e nella sede. Insieme contavano più di 100 soci.
             </p>
             <p>
-              Con il passare degli anni i soci conferenti diminuirono, fino ad arrivare agli anni '80 quando le due cooperative si riunirono di nuovo sotto un unico Caseificio: il <strong>Santa Lucia</strong>, che continua tutt'oggi la sua opera di produzione del Parmigiano-Reggiano D.O.P.
+              Con il passare degli anni i soci conferenti diminuirono, fino ad arrivare agli anni '80 quando le due cooperative si riunirono di nuovo sotto un unico caseificio: il <strong>Santa Lucia</strong>, che continua tutt'oggi la sua opera di produzione del Parmigiano-Reggiano D.O.P.
             </p>
 
             <h2>Il Processo di Lavorazione</h2>
             <p>
-              Ogni giorno il latte del mattino appena munto arriva al Caseificio direttamente dalle stalle. Questo processo viene seguito con precisione secondo le regole storiche della caseificazione emiliana.
+              Ogni giorno il latte del mattino appena munto arriva al caseificio direttamente dalle stalle. Questo processo viene seguito con precisione secondo le regole storiche della caseificazione emiliana.
             </p>
 
             <div class="process-steps">
@@ -448,31 +276,12 @@
       <nav class="footer__links" aria-label="Link utili">
         <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
         <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="https://www.appenninomodenese.it" target="_blank" rel="noopener">Appennino Modenese</a>
         <a href="index.html#top" class="footer__back">↑ Torna su</a>
       </nav>
     </div>
   </footer>
 
-  <script>
-    /* Navbar */
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.navbar__links');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    /* Scroll reveal */
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
