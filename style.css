@@ -532,6 +532,424 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   font-style: italic;
 }
 
+/* ── I PROTAGONISTI ───────────────────────────────────────── */
+.protagonisti-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.protagonista-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.protagonista-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.protagonista-card__photo {
+  overflow: hidden;
+}
+.protagonista-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 280px;
+  transition: transform .5s ease;
+}
+.protagonista-card:hover .protagonista-card__photo img {
+  transform: scale(1.04);
+}
+.protagonista-card__content {
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.protagonista-card__role {
+  font-family: var(--font-display);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+  margin-bottom: .5rem;
+}
+.protagonista-card__name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin: 0 0 .25rem;
+  line-height: 1.2;
+}
+.protagonista-card__dates {
+  font-family: var(--font-body);
+  font-size: .85rem;
+  color: var(--stone-light);
+  font-style: italic;
+  margin-bottom: .75rem;
+}
+.protagonista-card__desc {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--stone-mid);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.protagonista-card__link {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--terra);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.protagonista-card:hover .protagonista-card__link {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* ── PREVIEW CARD MEMORIE (homepage) ──────────────────────── */
+.preview-card--memorie {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+}
+.preview-card--memorie .preview-card__content {
+  padding: 2.5rem;
+}
+.preview-card--memorie .preview-card__content p {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--stone-mid);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.preview-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.preview-card__link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--terra);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.preview-card__link:hover {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+.memorie-note {
+  margin-top: 2rem;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  color: var(--stone-light);
+  text-align: center;
+  font-style: italic;
+}
+.memorie-note a {
+  color: var(--terra);
+  font-weight: 600;
+}
+.memorie-note a:hover {
+  text-decoration: underline;
+}
+
+/* ── PAGE HERO (pagine dedicate) ──────────────────────────── */
+.page-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-hero--memorie {
+  background: linear-gradient(135deg, var(--stone) 0%, var(--stone-mid) 100%);
+}
+.page-hero--memorie .page-hero__bg {
+  display: none;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    170deg,
+    rgba(43,35,24,.6) 0%,
+    rgba(193,68,14,.4) 60%,
+    rgba(43,35,24,.7) 100%
+  );
+  z-index: 1;
+}
+.page-hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  animation: fadeUp .9s ease both;
+}
+.page-hero__title {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  text-shadow: 0 4px 24px rgba(0,0,0,.4);
+}
+.page-hero__subtitle {
+  font-size: clamp(.95rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,.85);
+  max-width: 560px;
+  font-weight: 300;
+  font-family: var(--font-body);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── CONTAINER NARROW (pagine dedicate) ───────────────────── */
+.container--narrow {
+  max-width: 800px;
+}
+
+/* ── BIOGRAFIA (pagina Don Nino) ──────────────────────────── */
+.biografia {
+  margin-top: 2rem;
+}
+.biografia h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--gold);
+}
+.biografia h2:first-child {
+  margin-top: 0;
+}
+.biografia h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--terra);
+  margin: 2rem 0 .75rem;
+}
+.biografia p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--stone-mid);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+/* ── DON NINO GALLERY (pagina dedicata) ───────────────────── */
+.don-nino-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+.don-nino-gallery__item {
+  text-align: center;
+}
+.don-nino-gallery__item img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+}
+.don-nino-gallery__item p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .85rem;
+  color: var(--stone-light);
+  margin-top: .75rem;
+}
+
+/* ── DON NINO TIMELINE FULL (pagina dedicata) ─────────────── */
+.don-nino-timeline-full {
+  margin: 3rem 0;
+}
+.don-nino-timeline-full h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+/* ── INTERVISTA (pagina Memorie) ──────────────────────────── */
+.intervista {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 3rem;
+}
+.intervista__header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(135deg, rgba(232,160,32,.12), rgba(193,68,14,.08));
+  border-bottom: 1px solid rgba(43,35,24,.08);
+}
+.intervista__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+.intervista__name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin: 0 0 .25rem;
+}
+.intervista__meta {
+  font-family: var(--font-body);
+  font-size: .9rem;
+  color: var(--stone-light);
+  font-style: italic;
+}
+.intervista__body {
+  padding: 2rem 2.5rem;
+}
+.intervista__body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--terra);
+  margin: 2rem 0 .75rem;
+}
+.intervista__body h3:first-child {
+  margin-top: 0;
+}
+.intervista__body p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--stone-mid);
+  line-height: 2;
+  margin-bottom: 1.3rem;
+}
+.intervista__audio-section {
+  padding: 1.5rem 2.5rem;
+  background: rgba(43,35,24,.03);
+  border-top: 1px solid rgba(43,35,24,.08);
+}
+.intervista__audio-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+.intervista__audio-icon {
+  font-size: 1.5rem;
+}
+.intervista__audio-header strong {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  color: var(--stone);
+  display: block;
+}
+.intervista__audio-duration {
+  font-family: var(--font-display);
+  font-size: .8rem;
+  color: var(--stone-light);
+}
+.intervista__audio-section audio {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+.intervista__audio-section audio::-webkit-media-controls-panel {
+  background: var(--cream);
+}
+
+/* ── INTERVISTA NAV (pagina Memorie) ──────────────────────── */
+.intervista-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.intervista-nav a {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--terra);
+  padding: .5rem 1rem;
+  border: 1px solid var(--terra);
+  border-radius: 50px;
+  transition: all var(--transition-fast);
+}
+.intervista-nav a:hover {
+  background: var(--terra);
+  color: var(--white);
+}
+
+/* ── PAGE NAV (navigazione tra pagine) ────────────────────── */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 3rem 0 1rem;
+  flex-wrap: wrap;
+}
+.page-nav .btn {
+  flex: 1;
+  justify-content: center;
+  min-width: 200px;
+}
+
+/* ── MEMORIE INTRO (pagina Memorie) ───────────────────────── */
+.memorie-intro {
+  margin-top: 1rem;
+}
+.memorie-intro p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--stone-mid);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
 /* ── Focus visible (accessibility) ───────────────────────── */
 :focus-visible {
   outline: 3px solid var(--gold);
@@ -546,6 +964,18 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   .cards-grid    { grid-template-columns:repeat(2, 1fr); }
   .contact-grid  { grid-template-columns:1fr; }
   .footer__inner { flex-direction:column; align-items:flex-start; gap:1rem; }
+  /* Protagonisti */
+  .protagonista-card       { grid-template-columns:200px 1fr; }
+  .protagonista-card__photo img { min-height:200px; }
+  .protagonista-card__content { padding:1.5rem; }
+  .protagonista-card__name { font-size:1.2rem; }
+  /* Pagine dedicate */
+  .don-nino-gallery   { grid-template-columns:1fr; }
+  .intervista__header { padding:1.25rem 1.5rem; }
+  .intervista__body   { padding:1.5rem; }
+  .intervista__audio-section { padding:1.25rem 1.5rem; }
+  .intervista__avatar  { width:52px; height:52px; font-size:1.6rem; }
+  .intervista__name    { font-size:1.2rem; }
 }
 @media (max-width:640px) {
   .navbar__links { display:none; }
@@ -570,4 +1000,25 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   .cards-grid        { grid-template-columns:1fr; }
   .about-stats       { flex-direction:column; }
   .lightbox__nav     { display:none; }
+  /* Protagonisti mobile */
+  .protagonista-card { grid-template-columns:1fr; }
+  .protagonista-card__photo img { min-height:240px; max-height:280px; }
+  .protagonista-card__content { padding:1.25rem; }
+  .protagonista-card__name { font-size:1.15rem; }
+  .protagonista-card__desc { font-size:.9rem; }
+  /* Pagine dedicate mobile */
+  .page-hero         { min-height:280px; }
+  .page-hero__title  { font-size:2rem; }
+  .intervista__header {
+    padding:1rem 1.2rem;
+    flex-direction:column;
+    text-align:center;
+  }
+  .intervista__body   { padding:1.25rem; }
+  .intervista__body p  { font-size:.95rem; }
+  .intervista__audio-section { padding:1rem 1.25rem; }
+  .intervista-nav     { flex-direction:column; align-items:center; }
+  .intervista-nav a   { width:100%; max-width:200px; text-align:center; }
+  .page-nav          { flex-direction:column; }
+  .page-nav .btn     { min-width:auto; }
 }
