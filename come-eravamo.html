@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Come eravamo – Memorie di Rocchetta Sandri</title>
+  <meta name="description" content="La vita quotidiana a Rocchetta Sandri: i mestieri, le tradizioni, il ritmo delle stagioni nei racconti di chi ha vissuto il borgo." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────────────── -->
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="index.html#about">Il borgo</a></li>
+        <li><a href="index.html#storia">Storia</a></li>
+        <li><a href="index.html#gallery">Galleria</a></li>
+        <li><a href="index.html#territorio">Territorio</a></li>
+        <li><a href="index.html#protagonisti">I Protagonisti</a></li>
+        <li><a href="index.html#memorie">Memorie</a></li>
+        <li><a href="index.html#map">Mappa</a></li>
+        <li><a href="index.html#contact">Contatti</a></li>
+      </ul>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── HERO ───────────────────────── -->
+    <header class="page-hero page-hero--come-eravamo">
+      <img class="page-hero__bg" src="images/come_eravamo.png" alt="Immagini di vita quotidiana a Rocchetta Sandri" />
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <span class="hero__badge">Memorie</span>
+        <h1 class="page-hero__title">Come eravamo</h1>
+        <p class="page-hero__subtitle">La vita quotidiana, i mestieri, il ritmo delle stagioni<br>nei racconti di chi ha vissuto la Rocchetta di un tempo</p>
+      </div>
+    </header>
+
+    <!-- ── INDICE TESTIMONIANZE ───────────────── -->
+    <section class="section section--light">
+      <div class="container container--narrow">
+
+        <div class="memorie-intro reveal">
+          <p>
+            I racconti della vita di tutti i giorni: il lavoro nei campi, l'artigianato, le tradizioni, la solidarietà tra vicini. Testimonianze dirette di chi ha vissuto l'Appennino modenese quando il tempo scorreva al ritmo delle stagioni.
+          </p>
+        </div>
+
+        <!-- Elenco testimonianze -->
+        <div class="testimonianze-list">
+
+          <a href="una-vita-al-ritmo-delle-stagioni.html" class="testimonianza-card reveal">
+            <h2 class="testimonianza-card__title">Una vita al ritmo delle stagioni</h2>
+            <span class="testimonianza-card__author">Sandri Ferdinando · Raccolta di Luisa Ciocci</span>
+            <p class="testimonianza-card__desc">Inverno, primavera, estate, autunno: il ciclo infinito del lavoro contadino, dalla neve alla raccolta delle castagne. I mestieri artigianali, la canapa, le castagne, la solidarietà tra vicini.</p>
+            <span class="testimonianza-card__link">Leggi la testimonianza →</span>
+          </a>
+
+          <a href="la-dinastia-dei-sandri.html" class="testimonianza-card reveal">
+            <h2 class="testimonianza-card__title">La dinastia dei Sandri</h2>
+            <span class="testimonianza-card__author">Sandri Ferdinando · Raccolta di Luisa Ciocci</span>
+            <p class="testimonianza-card__desc">La storia della famiglia che ha dato il nome al borgo. Dal nonno Domenico sopravvissuto al colera del 1855, fino all'espansione del podere della Casa Nuova oltre i 100 ettari.</p>
+            <span class="testimonianza-card__link">Leggi la testimonianza →</span>
+          </a>
+
+        </div>
+
+        <div class="page-nav reveal">
+          <a href="memorie.html" class="btn btn--primary">← Torna alle memorie</a>
+          <a href="index.html" class="btn btn--primary">Torna al borgo</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – postmaster@rocchettasandri.it</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="https://www.appenninomodenese.it" target="_blank" rel="noopener">Appennino Modenese</a>
+        <a href="index.html#top" class="footer__back">↑ Torna su</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

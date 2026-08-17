@@ -671,6 +671,206 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   text-decoration: underline;
 }
 
+/* ── MEMORIE GRID (hub memorie.html) ──────────────────────── */
+.memorie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.memorie-card {
+  display: block;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.memorie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.memorie-card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: .75rem;
+  line-height: 1.2;
+}
+.memorie-card__desc {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--stone-mid);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.memorie-card__link {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--terra);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.memorie-card:hover .memorie-card__link {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* ── TESTIMONIANZE LIST (come-eravamo.html) ───────────────── */
+.testimonianze-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.testimonianza-card {
+  display: block;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  border-left: 4px solid var(--gold);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.testimonianza-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.testimonianza-card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: .5rem;
+  line-height: 1.2;
+}
+.testimonianza-card__author {
+  font-family: var(--font-body);
+  font-size: .85rem;
+  color: var(--stone-light);
+  font-style: italic;
+  margin-bottom: .75rem;
+  display: block;
+}
+.testimonianza-card__desc {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--stone-mid);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.testimonianza-card__link {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--terra);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.testimonianza-card:hover .testimonianza-card__link {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* ── PERSONAGGI LIST (personaggi.html) ────────────────────── */
+.personaggi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.personaggio-card {
+  display: block;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  border-left: 4px solid var(--terra);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.personaggio-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.personaggio-card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: .5rem;
+  line-height: 1.2;
+}
+.personaggio-card__subtitle {
+  font-family: var(--font-body);
+  font-size: .85rem;
+  color: var(--stone-light);
+  font-style: italic;
+  margin-bottom: .75rem;
+  display: block;
+}
+.personaggio-card__desc {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--stone-mid);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.personaggio-card__link {
+  font-family: var(--font-display);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--terra);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.personaggio-card:hover .personaggio-card__link {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* ── AUDIO PLAYER (pagine personaggi) ─────────────────────── */
+.audio-player {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+  margin: 2.5rem 0;
+}
+.audio-player__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.audio-player__icon {
+  font-size: 1.5rem;
+}
+.audio-player__header strong {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  color: var(--stone);
+  display: block;
+}
+.audio-player__subtitle {
+  font-family: var(--font-body);
+  font-size: .85rem;
+  color: var(--stone-light);
+  font-style: italic;
+}
+.audio-player audio {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+.audio-player audio::-webkit-media-controls-panel {
+  background: var(--cream);
+}
+
 /* ── PAGE HERO (pagine dedicate) ──────────────────────────── */
 .page-hero {
   position: relative;
@@ -705,6 +905,19 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
     rgba(43,35,24,.7) 100%
   );
   z-index: 1;
+}
+
+/* Hero specifico per "Come eravamo" - overlay più leggero per mostrare i volti */
+.page-hero--come-eravamo .page-hero__overlay {
+  background: linear-gradient(
+    170deg,
+    rgba(43,35,24,.35) 0%,
+    rgba(193,68,14,.25) 60%,
+    rgba(43,35,24,.45) 100%
+  );
+}
+.page-hero--come-eravamo .page-hero__bg {
+  object-position: center 30%;
 }
 .page-hero__content {
   position: relative;
@@ -976,6 +1189,11 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   .intervista__audio-section { padding:1.25rem 1.5rem; }
   .intervista__avatar  { width:52px; height:52px; font-size:1.6rem; }
   .intervista__name    { font-size:1.2rem; }
+  /* Memorie */
+  .memorie-grid       { grid-template-columns:1fr; }
+  .testimonianza-card { padding:1.5rem 1.75rem; }
+  /* Personaggi */
+  .personaggio-card   { padding:1.5rem 1.75rem; }
 }
 @media (max-width:640px) {
   .navbar__links { display:none; }
@@ -1021,4 +1239,11 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   .intervista-nav a   { width:100%; max-width:200px; text-align:center; }
   .page-nav          { flex-direction:column; }
   .page-nav .btn     { min-width:auto; }
+  /* Memorie mobile */
+  .testimonianza-card { padding:1.25rem; }
+  .testimonianza-card__title { font-size:1.15rem; }
+  /* Personaggi mobile */
+  .personaggio-card { padding:1.25rem; }
+  .personaggio-card__title { font-size:1.15rem; }
+  .audio-player { padding:1.25rem; }
 }

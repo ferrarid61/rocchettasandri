@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oreste – Personaggi di Rocchetta Sandri</title>
+  <meta name="description" content="Il racconto di Oreste, personaggio tipico di Rocchetta Sandri, raccontato da Bruno Pellegrini. Episodi memorabili e aneddoti divertenti." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────────────── -->
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Rocchetta Sandri</a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="index.html#about">Il borgo</a></li>
+        <li><a href="index.html#storia">Storia</a></li>
+        <li><a href="index.html#gallery">Galleria</a></li>
+        <li><a href="index.html#territorio">Territorio</a></li>
+        <li><a href="index.html#protagonisti">I Protagonisti</a></li>
+        <li><a href="index.html#memorie">Memorie</a></li>
+        <li><a href="index.html#map">Mappa</a></li>
+        <li><a href="index.html#contact">Contatti</a></li>
+      </ul>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── HERO ───────────────────────── -->
+    <header class="page-hero page-hero--memorie">
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <span class="hero__badge">I personaggi</span>
+        <h1 class="page-hero__title">Oreste</h1>
+        <p class="page-hero__subtitle">Raccontato da Bruno Pellegrini</p>
+      </div>
+    </header>
+
+    <!-- ── RACCONTO ───────────────── -->
+    <section class="section section--light">
+      <div class="container container--narrow">
+
+        <article class="biografia reveal">
+
+          <p>
+            Oreste, personaggio tipico di Trentino, conosciuto da tutti, molto molto amato, un po' particolare e quindi tra le altre cose aveva questa fissa qua.
+          </p>
+
+          <h2>Le galline e il frumento</h2>
+          <p>
+            Praticamente quando arrivava il momento della mietitura, le galline che erano libere nel cortile gli andavano a mangiare il frumento. E lui cosa fece? Tagliò in un campo 10 metri quadri di frumento, poi al centro piantò un palo e poi legò tutte le galline per le gambe in modo che però non arrivassero al frumento. Quindi le ha lasciate lì due, tre, quattro giorni finché le galline son morte e tutte le mattine lui andava là e diceva: "Gallinelle, mangiate il frumento, ci arrivate a mangiare il frumento, adesso non me lo mangerete più". E alla fine le galline sono morte tutte. Questo era Oreste.
+          </p>
+
+          <h2>La vacca truccata</h2>
+          <p>
+            Oreste parte da Campolino che deve portare la vacca al toro. Allora la prepara, gli dà le sopracciglia, il rossetto nella bocca e poi ci fa una gran corona di fiori, rose e fiori per portarla al toro.
+          </p>
+          <p>
+            Allora Oreste passa da mio padre qua che si chiamava Caino. E Oreste, dove vai? "Io devo portare a sposare la vacca". E poi dopo Oreste per te va fino a casa Tosetti. Casa Tosetti la porta su. Sta su una mezza giornata praticamente e torna e passa ancora da papà, da Caino, e dice: "Ma taci le avevo dato il profumo di mia figlia didietro il toro ha preso paura e non voleva fare niente. Adesso proverò un'altra volta a riportarla su", praticamente, ecco.
+          </p>
+
+        </article>
+
+        <!-- Audio player -->
+        <div class="audio-player reveal">
+          <div class="audio-player__header">
+            <span class="audio-player__icon">🎙️</span>
+            <div>
+              <strong>Ascolta il racconto</strong>
+              <span class="audio-player__subtitle">Oreste raccontato da Bruno Pellegrini</span>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/oreste.mp3" type="audio/mpeg">
+            Il tuo browser non supporta l'elemento audio.
+          </audio>
+        </div>
+
+        <div class="page-nav reveal">
+          <a href="personaggi.html" class="btn btn--primary">← Torna ai personaggi</a>
+          <a href="index.html" class="btn btn--primary">Torna al borgo</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Rocchetta Sandri</p>
+      <p class="footer__copy">&copy; 2026 Rocchetta Sandri – postmaster@rocchettasandri.it</p>
+      <nav class="footer__links" aria-label="Link utili">
+        <a href="https://www.comune.sestola.mo.it" target="_blank" rel="noopener">Comune di Sestola</a>
+        <a href="https://visitsestola.com" target="_blank" rel="noopener">Visit Sestola</a>
+        <a href="https://www.appenninomodenese.it" target="_blank" rel="noopener">Appennino Modenese</a>
+        <a href="index.html#top" class="footer__back">↑ Torna su</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
