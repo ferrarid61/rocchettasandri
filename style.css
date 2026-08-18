@@ -1157,6 +1157,41 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   background: var(--cream);
 }
 
+/* ── VIDEO PLAYER (pagine testimonianze) ─────────────────── */
+.video-player {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+  margin: 2.5rem 0;
+}
+.video-player__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.video-player__icon {
+  font-size: 1.5rem;
+}
+.video-player__header strong {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  color: var(--stone);
+  display: block;
+}
+.video-player__subtitle {
+  font-family: var(--font-body);
+  font-size: .85rem;
+  color: var(--stone-light);
+  font-style: italic;
+}
+.video-player video {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+}
+
 /* ── PAGE HERO (pagine dedicate) ──────────────────────────── */
 .page-hero {
   position: relative;
