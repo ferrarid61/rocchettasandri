@@ -1566,5 +1566,8 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   /* Personaggi mobile */
   .personaggio-card { padding:1.25rem; }
   .personaggio-card__title { font-size:1.15rem; }
+  /* Micro economia mobile */
+  .micro-economia-card { padding:1.25rem; }
+  .micro-economia-card__title { font-size:1.15rem; }
   .audio-player { padding:1.25rem; }
 }
