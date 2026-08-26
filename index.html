@@ -384,6 +384,37 @@
 
         </div>
 
+        <!-- ── FOTO D'EPOCA ── -->
+        <div class="epoca-gallery reveal">
+          <h3 class="epoca-gallery__title">Foto d'epoca</h3>
+          <p class="epoca-gallery__subtitle">Immagini dalla memoria del borgo</p>
+          <div class="epoca-gallery__grid">
+
+            <a class="epoca-item" href="images/rocchetta.jpeg" data-caption="Rocchetta Sandri – veduta del borgo (foto d'epoca)" data-gallery="epoca">
+              <img src="images/rocchetta.jpeg" alt="Veduta storica del borgo di Rocchetta Sandri" loading="lazy" />
+              <div class="epoca-item__overlay" aria-hidden="true">
+                <span>Rocchetta Sandri</span>
+              </div>
+            </a>
+
+            <a class="epoca-item" href="images/casa_trenti.jpeg" data-caption="Casa Trenti – una delle abitazioni storiche del borgo (foto d'epoca)" data-gallery="epoca">
+              <img src="images/casa_trenti.jpeg" alt="Casa Trenti, abitazione storica di Rocchetta Sandri" loading="lazy" />
+              <div class="epoca-item__overlay" aria-hidden="true">
+                <span>Casa Trenti</span>
+              </div>
+            </a>
+
+            <a class="epoca-item" href="images/chiesa.jpeg" data-caption="La chiesa di Rocchetta Sandri – immagine storica (foto d'epoca)" data-gallery="epoca">
+              <img src="images/chiesa.jpeg" alt="La chiesa storica di Rocchetta Sandri" loading="lazy" />
+              <div class="epoca-item__overlay" aria-hidden="true">
+                <span>La Chiesa</span>
+              </div>
+            </a>
+
+          </div>
+          <p class="epoca-gallery__credits">Gentile concessione di Agostino Trenti</p>
+        </div>
+
         <p class="memorie-note reveal">
           Le testimonianze fanno parte di un progetto di raccolta della memoria storica di Rocchetta Sandri. Se anche tu hai ricordi da condividere, <a href="mailto:postmaster@rocchettasandri.it">contattaci</a>.
         </p>
@@ -445,6 +476,17 @@
       <p class="lightbox__caption" id="lightbox-caption"></p>
     </div>
     <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Immagine successiva">&#8250;</button>
+  </div>
+
+  <!-- Lightbox foto d'epoca -->
+  <div class="lightbox-overlay" id="lightbox-epoca" role="dialog" aria-modal="true" aria-label="Visualizzatore foto d'epoca">
+    <button class="lightbox__close" id="lightbox-epoca-close" aria-label="Chiudi galleria">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-epoca-prev" aria-label="Foto precedente">&#8249;</button>
+    <div class="lightbox__inner">
+      <img src="" alt="" id="lightbox-epoca-img" />
+      <p class="lightbox__caption" id="lightbox-epoca-caption"></p>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-epoca-next" aria-label="Foto successiva">&#8250;</button>
   </div>
 
   <!-- Leaflet JS -->

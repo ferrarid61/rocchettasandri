@@ -697,6 +697,101 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   text-decoration: underline;
 }
 
+/* ── FOTO D'EPOCA (sezione Memorie) ──────────────────────── */
+.epoca-gallery {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--gold);
+}
+.epoca-gallery__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: .25rem;
+}
+.epoca-gallery__subtitle {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--stone-light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.epoca-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.epoca-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.epoca-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.epoca-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(.25) saturate(.85);
+  transition: filter .5s ease, transform .5s ease;
+}
+.epoca-item:hover img {
+  filter: sepia(0) saturate(1);
+  transform: scale(1.05);
+}
+.epoca-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(43,35,24,.7) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.epoca-item:hover .epoca-item__overlay {
+  opacity: 1;
+}
+.epoca-item__overlay span {
+  color: var(--white);
+  font-weight: 600;
+  font-size: .95rem;
+}
+.epoca-gallery__credits {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: .82rem;
+  color: var(--stone-light);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Responsive foto d'epoca */
+@media (max-width: 900px) {
+  .epoca-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .epoca-gallery {
+    padding: 1.25rem;
+  }
+  .epoca-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── MEMORIE GRID (hub memorie.html) ──────────────────────── */
 .memorie-grid {
   display: grid;

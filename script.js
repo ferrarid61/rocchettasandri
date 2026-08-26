@@ -156,6 +156,104 @@ document.addEventListener('keydown', e => {
   }
 });
 
+/* ── Lightbox foto d'epoca ──────────────────────────────── */
+const lightboxEpoca       = document.getElementById('lightbox-epoca');
+const lightboxEpocaImg    = document.getElementById('lightbox-epoca-img');
+const lightboxEpocaCap    = document.getElementById('lightbox-epoca-caption');
+const lightboxEpocaClose  = document.getElementById('lightbox-epoca-close');
+const lightboxEpocaPrev   = document.getElementById('lightbox-epoca-prev');
+const lightboxEpocaNext   = document.getElementById('lightbox-epoca-next');
+
+const epocaItems          = Array.from(document.querySelectorAll('.epoca-item'));
+let epocaIndex            = 0;
+let epocaPreviouslyFocused = null;
+
+function getFocusableInEpocaLightbox() {
+  return Array.from(lightboxEpoca.querySelectorAll(FOCUSABLE)).filter(
+    el => !el.hasAttribute('disabled') && el.offsetParent !== null
+  );
+}
+
+function openEpocaLightbox(index) {
+  epocaIndex = index;
+  const item = epocaItems[index];
+  lightboxEpocaImg.src = item.getAttribute('href');
+  lightboxEpocaImg.alt = item.querySelector('img').alt;
+  lightboxEpocaCap.textContent = item.getAttribute('data-caption');
+  lightboxEpoca.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  epocaPreviouslyFocused = document.activeElement;
+  requestAnimationFrame(() => lightboxEpocaClose.focus());
+}
+
+function closeEpocaLightbox() {
+  lightboxEpoca.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightboxEpocaImg.src = ''; }, 350);
+
+  if (epocaPreviouslyFocused) epocaPreviouslyFocused.focus();
+}
+
+function showEpocaImage(index) {
+  epocaIndex = (index + epocaItems.length) % epocaItems.length;
+  const item = epocaItems[epocaIndex];
+  lightboxEpocaImg.style.opacity = '0';
+  setTimeout(() => {
+    lightboxEpocaImg.src = item.getAttribute('href');
+    lightboxEpocaImg.alt = item.querySelector('img').alt;
+    lightboxEpocaCap.textContent = item.getAttribute('data-caption');
+    lightboxEpocaImg.style.opacity = '1';
+  }, 200);
+}
+
+epocaItems.forEach((item, index) => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    openEpocaLightbox(index);
+  });
+});
+
+lightboxEpocaClose.addEventListener('click', closeEpocaLightbox);
+lightboxEpocaPrev.addEventListener('click', () => showEpocaImage(epocaIndex - 1));
+lightboxEpocaNext.addEventListener('click', () => showEpocaImage(epocaIndex + 1));
+
+lightboxEpoca.addEventListener('click', e => {
+  if (e.target === lightboxEpoca) closeEpocaLightbox();
+});
+
+document.addEventListener('keydown', e => {
+  if (!lightboxEpoca.classList.contains('active')) return;
+
+  if (e.key === 'Escape') {
+    closeEpocaLightbox();
+    return;
+  }
+
+  if (e.key === 'ArrowLeft') { showEpocaImage(epocaIndex - 1); return; }
+  if (e.key === 'ArrowRight') { showEpocaImage(epocaIndex + 1); return; }
+
+  if (e.key === 'Tab') {
+    const focusable = getFocusableInEpocaLightbox();
+    if (focusable.length === 0) { e.preventDefault(); return; }
+
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+
+    if (e.key === 'Tab' && e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else if (e.key === 'Tab') {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+});
+
 /* ── Leaflet map ────────────────────────────────────────── */
 const LAT = 44.2511;
 const LNG = 10.8402;
