@@ -528,6 +528,14 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   line-height:1;
 }
 .lightbox__close:hover { color:var(--white); }
+.lightbox__fullscreen {
+  position:absolute; top:1.25rem; right:4.5rem;
+  font-size:1.6rem; color:rgba(255,255,255,.7);
+  transition:color var(--transition-fast), transform var(--transition-fast);
+  line-height:1;
+  padding:.5rem;
+}
+.lightbox__fullscreen:hover { color:var(--white); transform:scale(1.1); }
 .lightbox__nav {
   position:absolute;
   top:50%; transform:translateY(-50%);

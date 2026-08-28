@@ -163,6 +163,7 @@ const lightboxEpocaCap    = document.getElementById('lightbox-epoca-caption');
 const lightboxEpocaClose  = document.getElementById('lightbox-epoca-close');
 const lightboxEpocaPrev   = document.getElementById('lightbox-epoca-prev');
 const lightboxEpocaNext   = document.getElementById('lightbox-epoca-next');
+const lightboxEpocaFs     = document.getElementById('lightbox-epoca-fullscreen');
 
 const epocaItems          = Array.from(document.querySelectorAll('.epoca-item'));
 let epocaIndex            = 0;
@@ -188,6 +189,11 @@ function openEpocaLightbox(index) {
 }
 
 function closeEpocaLightbox() {
+  // Esci dal fullscreen se attivo
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
+
   lightboxEpoca.classList.remove('active');
   document.body.style.overflow = '';
   setTimeout(() => { lightboxEpocaImg.src = ''; }, 350);
@@ -217,6 +223,30 @@ epocaItems.forEach((item, index) => {
 lightboxEpocaClose.addEventListener('click', closeEpocaLightbox);
 lightboxEpocaPrev.addEventListener('click', () => showEpocaImage(epocaIndex - 1));
 lightboxEpocaNext.addEventListener('click', () => showEpocaImage(epocaIndex + 1));
+
+// Fullscreen
+function toggleEpocaFullscreen() {
+  if (!document.fullscreenElement) {
+    lightboxEpoca.requestFullscreen().catch(err => {
+      console.log(`Errore fullscreen: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+lightboxEpocaFs.addEventListener('click', toggleEpocaFullscreen);
+
+// Aggiorna icona quando cambia stato fullscreen
+document.addEventListener('fullscreenchange', () => {
+  if (document.fullscreenElement) {
+    lightboxEpocaFs.textContent = '⛶';
+    lightboxEpocaFs.setAttribute('aria-label', 'Esci da schermo intero');
+  } else {
+    lightboxEpocaFs.textContent = '⛶';
+    lightboxEpocaFs.setAttribute('aria-label', 'Schermo intero');
+  }
+});
 
 lightboxEpoca.addEventListener('click', e => {
   if (e.target === lightboxEpoca) closeEpocaLightbox();
