@@ -459,6 +459,39 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 .feature-card h3 { font-size:1.1rem; font-weight:600; color:var(--gold-light); margin-bottom:.5rem; }
 .feature-card p  { font-size:.9rem; color:rgba(255,255,255,.7); font-family:var(--font-body); }
 
+/* Card larga con galleria */
+.feature-card--wide {
+  grid-column: span 2;
+  padding: 2rem;
+}
+.feature-card__gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+.feature-card__photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  aspect-ratio: 1;
+  transition: transform var(--transition);
+}
+.feature-card__photo:hover {
+  transform: scale(1.05);
+}
+.feature-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter .3s ease;
+}
+.feature-card__photo:hover img {
+  filter: brightness(1.1);
+}
+
 /* ── MAP ──────────────────────────────────────────────────── */
 #mapid {
   height:420px;

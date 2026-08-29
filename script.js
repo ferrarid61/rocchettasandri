@@ -284,6 +284,117 @@ document.addEventListener('keydown', e => {
   }
 });
 
+/* ── Lightbox territorio ──────────────────────────────── */
+const lightboxTerritorio       = document.getElementById('lightbox-territorio');
+const lightboxTerritorioImg    = document.getElementById('lightbox-territorio-img');
+const lightboxTerritorioCap    = document.getElementById('lightbox-territorio-caption');
+const lightboxTerritorioClose  = document.getElementById('lightbox-territorio-close');
+const lightboxTerritorioPrev   = document.getElementById('lightbox-territorio-prev');
+const lightboxTerritorioNext   = document.getElementById('lightbox-territorio-next');
+const lightboxTerritorioFs     = document.getElementById('lightbox-territorio-fullscreen');
+
+const territorioItems          = Array.from(document.querySelectorAll('.feature-card__photo'));
+let territorioIndex            = 0;
+let territorioPreviouslyFocused = null;
+
+function getFocusableInTerritorioLightbox() {
+  return Array.from(lightboxTerritorio.querySelectorAll(FOCUSABLE)).filter(
+    el => !el.hasAttribute('disabled') && el.offsetParent !== null
+  );
+}
+
+function openTerritorioLightbox(index) {
+  territorioIndex = index;
+  const item = territorioItems[index];
+  lightboxTerritorioImg.src = item.getAttribute('href');
+  lightboxTerritorioImg.alt = item.querySelector('img').alt;
+  lightboxTerritorioCap.textContent = item.getAttribute('data-caption');
+  lightboxTerritorio.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  territorioPreviouslyFocused = document.activeElement;
+  requestAnimationFrame(() => lightboxTerritorioClose.focus());
+}
+
+function closeTerritorioLightbox() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
+
+  lightboxTerritorio.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightboxTerritorioImg.src = ''; }, 350);
+
+  if (territorioPreviouslyFocused) territorioPreviouslyFocused.focus();
+}
+
+function showTerritorioImage(index) {
+  territorioIndex = (index + territorioItems.length) % territorioItems.length;
+  const item = territorioItems[territorioIndex];
+  lightboxTerritorioImg.style.opacity = '0';
+  setTimeout(() => {
+    lightboxTerritorioImg.src = item.getAttribute('href');
+    lightboxTerritorioImg.alt = item.querySelector('img').alt;
+    lightboxTerritorioCap.textContent = item.getAttribute('data-caption');
+    lightboxTerritorioImg.style.opacity = '1';
+  }, 200);
+}
+
+territorioItems.forEach((item, index) => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    openTerritorioLightbox(index);
+  });
+});
+
+lightboxTerritorioClose.addEventListener('click', closeTerritorioLightbox);
+lightboxTerritorioPrev.addEventListener('click', () => showTerritorioImage(territorioIndex - 1));
+lightboxTerritorioNext.addEventListener('click', () => showTerritorioImage(territorioIndex + 1));
+
+function toggleTerritorioFullscreen() {
+  if (!document.fullscreenElement) {
+    lightboxTerritorio.requestFullscreen().catch(err => {
+      console.log(`Errore fullscreen: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+lightboxTerritorioFs.addEventListener('click', toggleTerritorioFullscreen);
+
+document.addEventListener('keydown', e => {
+  if (!lightboxTerritorio.classList.contains('active')) return;
+
+  if (e.key === 'Escape') {
+    closeTerritorioLightbox();
+    return;
+  }
+
+  if (e.key === 'ArrowLeft') { showTerritorioImage(territorioIndex - 1); return; }
+  if (e.key === 'ArrowRight') { showTerritorioImage(territorioIndex + 1); return; }
+
+  if (e.key === 'Tab') {
+    const focusable = getFocusableInTerritorioLightbox();
+    if (focusable.length === 0) { e.preventDefault(); return; }
+
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+});
+
 /* ── Leaflet map ────────────────────────────────────────── */
 const LAT = 44.2511;
 const LNG = 10.8402;
