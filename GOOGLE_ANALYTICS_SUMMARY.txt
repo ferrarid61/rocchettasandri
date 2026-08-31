@@ -1,0 +1,70 @@
+GOOGLE ANALYTICS TRACKING CODE - INSTALLATION COMPLETE
+======================================================
+
+Date: 2026-08-31
+Tracking ID: G-79RTDE95ZK
+
+FILES UPDATED: 40 total
+-----------------------
+
+Root Directory (20 files):
+✓ chiesa.html
+✓ come-eravamo.html
+✓ crescentine.html
+✓ don-nino.html
+✓ index.html
+✓ la-dinastia-dei-sandri.html
+✓ liguri-friniati.html
+✓ memorie.html
+✓ micro-economia-locale.html
+✓ momenti-importanti.html
+✓ morettina.html
+✓ oratorio.html
+✓ oreste.html
+✓ ortica.html
+✓ parmigiano.html
+✓ personaggi.html
+✓ rocca.html
+✓ rocchetta-in-fiamme.html
+✓ sagra.html
+✓ una-vita-al-ritmo-delle-stagioni.html
+
+English Subdirectory (20 files):
+✓ en/chiesa.html
+✓ en/come-eravamo.html
+✓ en/crescentine.html
+✓ en/don-nino.html
+✓ en/index.html
+✓ en/la-dinastia-dei-sandri.html
+✓ en/liguri-friniati.html
+✓ en/memorie.html
+✓ en/micro-economia-locale.html
+✓ en/momenti-importanti.html
+✓ en/morettina.html
+✓ en/oratorio.html
+✓ en/oreste.html
+✓ en/ortica.html
+✓ en/parmigiano.html
+✓ en/personaggi.html
+✓ en/rocca.html
+✓ en/rocchetta-in-fiamme.html
+✓ en/sagra.html
+✓ en/una-vita-al-ritmo-delle-stagioni.html
+
+INSTALLATION DETAILS:
+--------------------
+- Code inserted immediately before </head> tag in each file
+- Google Analytics tracking ID: G-79RTDE95ZK
+- All 40 HTML files now contain the tracking code
+- Each file has 2 occurrences of the tracking ID (as expected)
+
+NEXT STEPS:
+----------
+1. Test the website to ensure pages load correctly
+2. Visit Google Analytics dashboard to verify data collection
+3. Allow 24-48 hours for data to appear in reports
+
+For verification, you can:
+- Check browser developer tools Network tab for gtag.js requests
+- Use Google Tag Assistant browser extension
+- Visit analytics.google.com to see if data is being collected
