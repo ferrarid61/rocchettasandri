@@ -401,8 +401,8 @@ const LNG = 10.8402;
 
 const map = L.map('mapid', { scrollWheelZoom: false }).setView([LAT, LNG], 14);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://openstreetmap.fr">OSM France</a>',
   maxZoom: 19
 }).addTo(map);
 
