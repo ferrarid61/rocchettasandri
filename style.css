@@ -1467,9 +1467,9 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 
 /* ── DON NINO GALLERY (pagina dedicata) ───────────────────── */
 .don-nino-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   margin: 3rem 0;
 }
 .don-nino-gallery__item {
@@ -1477,6 +1477,9 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 }
 .don-nino-gallery__item img {
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   object-fit: cover;
@@ -1487,6 +1490,7 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   font-size: .85rem;
   color: var(--stone-light);
   margin-top: .75rem;
+  text-align: center;
 }
 
 /* ── DON NINO TIMELINE FULL (pagina dedicata) ─────────────── */
@@ -1494,6 +1498,48 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   margin: 3rem 0;
 }
 .don-nino-timeline-full h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+/* ── GEMMA GALLERY (pagina Maestra Gemma) ─────────────────── */
+.gemma-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 3rem 0;
+}
+.gemma-gallery__item {
+  text-align: center;
+}
+.gemma-gallery__item img {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+}
+.gemma-gallery__item p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .85rem;
+  color: var(--stone-light);
+  margin-top: .75rem;
+  text-align: center;
+}
+
+/* ── GEMMA TIMELINE FULL (pagina Maestra Gemma) ───────────── */
+.gemma-timeline-full {
+  margin: 3rem 0;
+}
+.gemma-timeline-full h2 {
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
@@ -1666,7 +1712,6 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   .protagonista-card__content { padding:1.5rem; }
   .protagonista-card__name { font-size:1.2rem; }
   /* Pagine dedicate */
-  .don-nino-gallery   { grid-template-columns:1fr; }
   .intervista__header { padding:1.25rem 1.5rem; }
   .intervista__body   { padding:1.5rem; }
   .intervista__audio-section { padding:1.25rem 1.5rem; }
