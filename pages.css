@@ -257,6 +257,26 @@
   line-height: 1.6;
 }
 
+/* ── Media Figure (images & videos) ──────────── */
+.media-figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+.media-figure img,
+.media-figure video {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+.media-figure figcaption {
+  margin-top: .75rem;
+  font-size: .9rem;
+  color: var(--stone-mid);
+  font-style: italic;
+  font-family: var(--font-body);
+}
+
 /* ── Back Link ────────────────────────────────── */
 .back-link {
   display: inline-flex;
