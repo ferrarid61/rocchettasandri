@@ -197,18 +197,6 @@ createLightbox({
 });
 
 createLightbox({
-  container: document.getElementById('lightbox-epoca'),
-  itemsSelector: '.epoca-item',
-  imgEl: document.getElementById('lightbox-epoca-img'),
-  captionEl: document.getElementById('lightbox-epoca-caption'),
-  closeEl: document.getElementById('lightbox-epoca-close'),
-  prevEl: document.getElementById('lightbox-epoca-prev'),
-  nextEl: document.getElementById('lightbox-epoca-next'),
-  fullscreenEl: document.getElementById('lightbox-epoca-fullscreen'),
-  enableFullscreen: true
-});
-
-createLightbox({
   container: document.getElementById('lightbox-territorio'),
   itemsSelector: '.feature-card__photo',
   imgEl: document.getElementById('lightbox-territorio-img'),
