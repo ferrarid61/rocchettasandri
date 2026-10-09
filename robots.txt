@@ -1,0 +1,17 @@
+# robots.txt per Rocchetta Sandri
+# https://www.rocchettasandri.it/robots.txt
+
+# Permetti a tutti i crawler di accedere al sito
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.rocchettasandri.it/sitemap.xml
+
+# Escludi directory e file non pubblici
+Disallow: /materiali/
+Disallow: /audio/
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /node_modules/
+Disallow: /*.md$
