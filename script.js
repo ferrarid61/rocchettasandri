@@ -8,7 +8,7 @@ const navLinks   = document.querySelector('.navbar__links');
 if (navbar) {
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  }, { passive: true });
 }
 
 if (hamburger && navLinks) {
@@ -52,347 +52,122 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ── Lightbox ───────────────────────────────────────────── */
-const lightbox       = document.getElementById('lightbox');
-const lightboxImg    = document.getElementById('lightbox-img');
-const lightboxCap    = document.getElementById('lightbox-caption');
-const lightboxClose  = document.getElementById('lightbox-close');
-const lightboxPrev   = document.getElementById('lightbox-prev');
-const lightboxNext   = document.getElementById('lightbox-next');
-
-const galleryItems   = Array.from(document.querySelectorAll('.gallery-item'));
-let currentIndex     = 0;
-let previouslyFocused = null;
-
-// All focusable elements inside the lightbox for focus trap
+/* ── Lightbox modulare ──────────────────────────────────── */
 const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-if (lightbox && lightboxClose && lightboxImg) {
-  function getFocusableInLightbox() {
-    return Array.from(lightbox.querySelectorAll(FOCUSABLE)).filter(
+function createLightbox(config) {
+  const {
+    container,
+    itemsSelector,
+    imgEl,
+    captionEl,
+    closeEl,
+    prevEl,
+    nextEl,
+    fullscreenEl = null,
+    enableFullscreen = false
+  } = config;
+
+  if (!container || !closeEl || !imgEl) return;
+
+  const items = Array.from(document.querySelectorAll(itemsSelector));
+  let currentIndex = 0;
+  let previouslyFocused = null;
+
+  function getFocusable() {
+    return Array.from(container.querySelectorAll(FOCUSABLE)).filter(
       el => !el.hasAttribute('disabled') && el.offsetParent !== null
     );
   }
 
-  function openLightbox(index) {
+  function open(index) {
     currentIndex = index;
-    const item = galleryItems[index];
-    lightboxImg.src = item.getAttribute('href');
-    lightboxImg.alt = item.querySelector('img').alt;
-    lightboxCap.textContent = item.getAttribute('data-caption');
-    lightbox.classList.add('active');
+    const item = items[index];
+    imgEl.src = item.getAttribute('href');
+    imgEl.alt = item.querySelector('img').alt;
+    captionEl.textContent = item.getAttribute('data-caption');
+    container.classList.add('active');
     document.body.style.overflow = 'hidden';
-
-    // Store where focus was before opening
     previouslyFocused = document.activeElement;
-
-    // Move focus inside lightbox
-    requestAnimationFrame(() => lightboxClose.focus());
+    requestAnimationFrame(() => closeEl.focus());
   }
 
-  function closeLightbox() {
-    lightbox.classList.remove('active');
+  function close() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+    container.classList.remove('active');
     document.body.style.overflow = '';
-    setTimeout(() => { lightboxImg.src = ''; }, 350);
-
-    // Restore focus to the element that opened the lightbox
+    setTimeout(() => { imgEl.src = ''; }, 350);
     if (previouslyFocused) previouslyFocused.focus();
   }
 
-  function showImage(index) {
-    currentIndex = (index + galleryItems.length) % galleryItems.length;
-    const item = galleryItems[currentIndex];
-    lightboxImg.style.opacity = '0';
+  function show(index) {
+    currentIndex = (index + items.length) % items.length;
+    const item = items[currentIndex];
+    imgEl.style.opacity = '0';
     setTimeout(() => {
-      lightboxImg.src = item.getAttribute('href');
-      lightboxImg.alt = item.querySelector('img').alt;
-      lightboxCap.textContent = item.getAttribute('data-caption');
-      lightboxImg.style.opacity = '1';
+      imgEl.src = item.getAttribute('href');
+      imgEl.alt = item.querySelector('img').alt;
+      captionEl.textContent = item.getAttribute('data-caption');
+      imgEl.style.opacity = '1';
     }, 200);
   }
 
-  galleryItems.forEach((item, index) => {
+  items.forEach((item, index) => {
     item.addEventListener('click', e => {
       e.preventDefault();
-      openLightbox(index);
+      open(index);
     });
   });
 
-  lightboxClose.addEventListener('click', closeLightbox);
-  if (lightboxPrev) lightboxPrev.addEventListener('click', () => showImage(currentIndex - 1));
-  if (lightboxNext) lightboxNext.addEventListener('click', () => showImage(currentIndex + 1));
+  closeEl.addEventListener('click', close);
+  if (prevEl) prevEl.addEventListener('click', () => show(currentIndex - 1));
+  if (nextEl) nextEl.addEventListener('click', () => show(currentIndex + 1));
 
-  // Close on backdrop click
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Keyboard navigation + focus trap
-  document.addEventListener('keydown', e => {
-    if (!lightbox.classList.contains('active')) return;
-
-    if (e.key === 'Escape') {
-      closeLightbox();
-      return;
-    }
-
-    if (e.key === 'ArrowLeft') { showImage(currentIndex - 1); return; }
-    if (e.key === 'ArrowRight') { showImage(currentIndex + 1); return; }
-
-    // Focus trap: keep Tab cycling inside the lightbox
-    if (e.key === 'Tab') {
-      const focusable = getFocusableInLightbox();
-      if (focusable.length === 0) { e.preventDefault(); return; }
-
-      const first = focusable[0];
-      const last  = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
+  if (enableFullscreen && fullscreenEl) {
+    fullscreenEl.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        container.requestFullscreen().catch(err => {
+          console.log(`Errore fullscreen: ${err.message}`);
+        });
       } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
+        document.exitFullscreen();
       }
-    }
-  });
-}
-
-/* ── Lightbox foto d'epoca ──────────────────────────────── */
-const lightboxEpoca       = document.getElementById('lightbox-epoca');
-const lightboxEpocaImg    = document.getElementById('lightbox-epoca-img');
-const lightboxEpocaCap    = document.getElementById('lightbox-epoca-caption');
-const lightboxEpocaClose  = document.getElementById('lightbox-epoca-close');
-const lightboxEpocaPrev   = document.getElementById('lightbox-epoca-prev');
-const lightboxEpocaNext   = document.getElementById('lightbox-epoca-next');
-const lightboxEpocaFs     = document.getElementById('lightbox-epoca-fullscreen');
-
-const epocaItems          = Array.from(document.querySelectorAll('.epoca-item'));
-let epocaIndex            = 0;
-let epocaPreviouslyFocused = null;
-
-if (lightboxEpoca && lightboxEpocaClose && lightboxEpocaImg) {
-  function getFocusableInEpocaLightbox() {
-    return Array.from(lightboxEpoca.querySelectorAll(FOCUSABLE)).filter(
-      el => !el.hasAttribute('disabled') && el.offsetParent !== null
-    );
-  }
-
-  function openEpocaLightbox(index) {
-    epocaIndex = index;
-    const item = epocaItems[index];
-    lightboxEpocaImg.src = item.getAttribute('href');
-    lightboxEpocaImg.alt = item.querySelector('img').alt;
-    lightboxEpocaCap.textContent = item.getAttribute('data-caption');
-    lightboxEpoca.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    epocaPreviouslyFocused = document.activeElement;
-    requestAnimationFrame(() => lightboxEpocaClose.focus());
-  }
-
-  function closeEpocaLightbox() {
-    // Esci dal fullscreen se attivo
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    }
-
-    lightboxEpoca.classList.remove('active');
-    document.body.style.overflow = '';
-    setTimeout(() => { lightboxEpocaImg.src = ''; }, 350);
-
-    if (epocaPreviouslyFocused) epocaPreviouslyFocused.focus();
-  }
-
-  function showEpocaImage(index) {
-    epocaIndex = (index + epocaItems.length) % epocaItems.length;
-    const item = epocaItems[epocaIndex];
-    lightboxEpocaImg.style.opacity = '0';
-    setTimeout(() => {
-      lightboxEpocaImg.src = item.getAttribute('href');
-      lightboxEpocaImg.alt = item.querySelector('img').alt;
-      lightboxEpocaCap.textContent = item.getAttribute('data-caption');
-      lightboxEpocaImg.style.opacity = '1';
-    }, 200);
-  }
-
-  epocaItems.forEach((item, index) => {
-    item.addEventListener('click', e => {
-      e.preventDefault();
-      openEpocaLightbox(index);
     });
-  });
 
-  lightboxEpocaClose.addEventListener('click', closeEpocaLightbox);
-  if (lightboxEpocaPrev) lightboxEpocaPrev.addEventListener('click', () => showEpocaImage(epocaIndex - 1));
-  if (lightboxEpocaNext) lightboxEpocaNext.addEventListener('click', () => showEpocaImage(epocaIndex + 1));
-
-  // Fullscreen
-  function toggleEpocaFullscreen() {
-    if (!document.fullscreenElement) {
-      lightboxEpoca.requestFullscreen().catch(err => {
-        console.log(`Errore fullscreen: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  }
-
-  if (lightboxEpocaFs) {
-    lightboxEpocaFs.addEventListener('click', toggleEpocaFullscreen);
-
-    // Aggiorna icona quando cambia stato fullscreen
     document.addEventListener('fullscreenchange', () => {
       if (document.fullscreenElement) {
-        lightboxEpocaFs.textContent = '⛶';
-        lightboxEpocaFs.setAttribute('aria-label', 'Esci da schermo intero');
+        fullscreenEl.textContent = '⛶';
+        fullscreenEl.setAttribute('aria-label', 'Esci da schermo intero');
       } else {
-        lightboxEpocaFs.textContent = '⛶';
-        lightboxEpocaFs.setAttribute('aria-label', 'Schermo intero');
+        fullscreenEl.textContent = '⛶';
+        fullscreenEl.setAttribute('aria-label', 'Schermo intero');
       }
     });
   }
 
-  lightboxEpoca.addEventListener('click', e => {
-    if (e.target === lightboxEpoca) closeEpocaLightbox();
+  container.addEventListener('click', e => {
+    if (e.target === container) close();
   });
 
   document.addEventListener('keydown', e => {
-    if (!lightboxEpoca.classList.contains('active')) return;
+    if (!container.classList.contains('active')) return;
 
     if (e.key === 'Escape') {
-      closeEpocaLightbox();
+      close();
       return;
     }
 
-    if (e.key === 'ArrowLeft') { showEpocaImage(epocaIndex - 1); return; }
-    if (e.key === 'ArrowRight') { showEpocaImage(epocaIndex + 1); return; }
+    if (e.key === 'ArrowLeft') { show(currentIndex - 1); return; }
+    if (e.key === 'ArrowRight') { show(currentIndex + 1); return; }
 
     if (e.key === 'Tab') {
-      const focusable = getFocusableInEpocaLightbox();
+      const focusable = getFocusable();
       if (focusable.length === 0) { e.preventDefault(); return; }
 
       const first = focusable[0];
-      const last  = focusable[focusable.length - 1];
-
-      if (e.key === 'Tab' && e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else if (e.key === 'Tab') {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    }
-  });
-}
-
-/* ── Lightbox territorio ──────────────────────────────── */
-const lightboxTerritorio       = document.getElementById('lightbox-territorio');
-const lightboxTerritorioImg    = document.getElementById('lightbox-territorio-img');
-const lightboxTerritorioCap    = document.getElementById('lightbox-territorio-caption');
-const lightboxTerritorioClose  = document.getElementById('lightbox-territorio-close');
-const lightboxTerritorioPrev   = document.getElementById('lightbox-territorio-prev');
-const lightboxTerritorioNext   = document.getElementById('lightbox-territorio-next');
-const lightboxTerritorioFs     = document.getElementById('lightbox-territorio-fullscreen');
-
-const territorioItems          = Array.from(document.querySelectorAll('.feature-card__photo'));
-let territorioIndex            = 0;
-let territorioPreviouslyFocused = null;
-
-if (lightboxTerritorio && lightboxTerritorioClose && lightboxTerritorioImg) {
-  function getFocusableInTerritorioLightbox() {
-    return Array.from(lightboxTerritorio.querySelectorAll(FOCUSABLE)).filter(
-      el => !el.hasAttribute('disabled') && el.offsetParent !== null
-    );
-  }
-
-  function openTerritorioLightbox(index) {
-    territorioIndex = index;
-    const item = territorioItems[index];
-    lightboxTerritorioImg.src = item.getAttribute('href');
-    lightboxTerritorioImg.alt = item.querySelector('img').alt;
-    lightboxTerritorioCap.textContent = item.getAttribute('data-caption');
-    lightboxTerritorio.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    territorioPreviouslyFocused = document.activeElement;
-    requestAnimationFrame(() => lightboxTerritorioClose.focus());
-  }
-
-  function closeTerritorioLightbox() {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    }
-
-    lightboxTerritorio.classList.remove('active');
-    document.body.style.overflow = '';
-    setTimeout(() => { lightboxTerritorioImg.src = ''; }, 350);
-
-    if (territorioPreviouslyFocused) territorioPreviouslyFocused.focus();
-  }
-
-  function showTerritorioImage(index) {
-    territorioIndex = (index + territorioItems.length) % territorioItems.length;
-    const item = territorioItems[territorioIndex];
-    lightboxTerritorioImg.style.opacity = '0';
-    setTimeout(() => {
-      lightboxTerritorioImg.src = item.getAttribute('href');
-      lightboxTerritorioImg.alt = item.querySelector('img').alt;
-      lightboxTerritorioCap.textContent = item.getAttribute('data-caption');
-      lightboxTerritorioImg.style.opacity = '1';
-    }, 200);
-  }
-
-  territorioItems.forEach((item, index) => {
-    item.addEventListener('click', e => {
-      e.preventDefault();
-      openTerritorioLightbox(index);
-    });
-  });
-
-  lightboxTerritorioClose.addEventListener('click', closeTerritorioLightbox);
-  if (lightboxTerritorioPrev) lightboxTerritorioPrev.addEventListener('click', () => showTerritorioImage(territorioIndex - 1));
-  if (lightboxTerritorioNext) lightboxTerritorioNext.addEventListener('click', () => showTerritorioImage(territorioIndex + 1));
-
-  function toggleTerritorioFullscreen() {
-    if (!document.fullscreenElement) {
-      lightboxTerritorio.requestFullscreen().catch(err => {
-        console.log(`Errore fullscreen: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  }
-
-  if (lightboxTerritorioFs) {
-    lightboxTerritorioFs.addEventListener('click', toggleTerritorioFullscreen);
-  }
-
-  document.addEventListener('keydown', e => {
-    if (!lightboxTerritorio.classList.contains('active')) return;
-
-    if (e.key === 'Escape') {
-      closeTerritorioLightbox();
-      return;
-    }
-
-    if (e.key === 'ArrowLeft') { showTerritorioImage(territorioIndex - 1); return; }
-    if (e.key === 'ArrowRight') { showTerritorioImage(territorioIndex + 1); return; }
-
-    if (e.key === 'Tab') {
-      const focusable = getFocusableInTerritorioLightbox();
-      if (focusable.length === 0) { e.preventDefault(); return; }
-
-      const first = focusable[0];
-      const last  = focusable[focusable.length - 1];
+      const last = focusable[focusable.length - 1];
 
       if (e.shiftKey) {
         if (document.activeElement === first) {
@@ -408,6 +183,42 @@ if (lightboxTerritorio && lightboxTerritorioClose && lightboxTerritorioImg) {
     }
   });
 }
+
+// Inizializza i 3 lightbox
+createLightbox({
+  container: document.getElementById('lightbox'),
+  itemsSelector: '.gallery-item',
+  imgEl: document.getElementById('lightbox-img'),
+  captionEl: document.getElementById('lightbox-caption'),
+  closeEl: document.getElementById('lightbox-close'),
+  prevEl: document.getElementById('lightbox-prev'),
+  nextEl: document.getElementById('lightbox-next'),
+  enableFullscreen: false
+});
+
+createLightbox({
+  container: document.getElementById('lightbox-epoca'),
+  itemsSelector: '.epoca-item',
+  imgEl: document.getElementById('lightbox-epoca-img'),
+  captionEl: document.getElementById('lightbox-epoca-caption'),
+  closeEl: document.getElementById('lightbox-epoca-close'),
+  prevEl: document.getElementById('lightbox-epoca-prev'),
+  nextEl: document.getElementById('lightbox-epoca-next'),
+  fullscreenEl: document.getElementById('lightbox-epoca-fullscreen'),
+  enableFullscreen: true
+});
+
+createLightbox({
+  container: document.getElementById('lightbox-territorio'),
+  itemsSelector: '.feature-card__photo',
+  imgEl: document.getElementById('lightbox-territorio-img'),
+  captionEl: document.getElementById('lightbox-territorio-caption'),
+  closeEl: document.getElementById('lightbox-territorio-close'),
+  prevEl: document.getElementById('lightbox-territorio-prev'),
+  nextEl: document.getElementById('lightbox-territorio-next'),
+  fullscreenEl: document.getElementById('lightbox-territorio-fullscreen'),
+  enableFullscreen: true
+});
 
 /* ── Leaflet map ────────────────────────────────────────── */
 const mapContainer = document.getElementById('mapid');
