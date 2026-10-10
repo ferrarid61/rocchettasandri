@@ -11,8 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 
-  <!-- No external PDF library needed -->
-
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="../pages.css" />
 <!-- Google tag (gtag.js) -->
@@ -165,17 +163,17 @@
         <h2 style="text-align: center; margin-bottom: 2rem;">Browse the Manuscript</h2>
 
         <div class="pdf-viewer-container">
-          <iframe
-            src="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf"
-            class="pdf-iframe"
-            title="Ferrari Manuscript - The Secrets of the Art Workshop">
-          </iframe>
-
-          <div style="text-align: center; margin-top: 1.5rem;">
-            <a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" download class="btn btn--secondary">
-              ⬇ Download PDF
-            </a>
-          </div>
+          <object
+            data="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf"
+            type="application/pdf"
+            class="pdf-object">
+            <div class="pdf-fallback">
+              <p>Your browser doesn't support embedded PDF viewing.</p>
+              <p><a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" target="_blank" class="btn btn--primary">Open PDF in new tab</a></p>
+              <p>or</p>
+              <p><a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" download class="btn btn--secondary">⬇ Download PDF</a></p>
+            </div>
+          </object>
         </div>
       </div>
     </section>
