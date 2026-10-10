@@ -163,17 +163,29 @@
         <h2 style="text-align: center; margin-bottom: 2rem;">Browse the Manuscript</h2>
 
         <div class="pdf-viewer-container">
-          <object
-            data="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf"
-            type="application/pdf"
-            class="pdf-object">
-            <div class="pdf-fallback">
-              <p>Your browser doesn't support embedded PDF viewing.</p>
-              <p><a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" target="_blank" class="btn btn--primary">Open PDF in new tab</a></p>
-              <p>or</p>
-              <p><a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" download class="btn btn--secondary">⬇ Download PDF</a></p>
+          <div id="pdf-desktop-view">
+            <object
+              data="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf"
+              type="application/pdf"
+              class="pdf-object">
+              <div class="pdf-fallback">
+                <p>Your browser doesn't support embedded PDF viewing.</p>
+                <p><a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" target="_blank" class="btn btn--primary">Open PDF in new tab</a></p>
+              </div>
+            </object>
+          </div>
+          <div id="pdf-mobile-view" style="display:none;">
+            <div class="pdf-mobile-container">
+              <div class="pdf-mobile-icon">📄</div>
+              <h3>Ferrari Manuscript</h3>
+              <p class="pdf-mobile-desc">The Secrets of the Art Workshop</p>
+              <p class="pdf-mobile-info">10 pages · c. 1860</p>
+              <a href="../documenti/manoscritto-famiglia-ferrari-trascrizione.pdf" target="_blank" class="btn btn--primary btn--large">
+                📖 View PDF
+              </a>
+              <p class="pdf-mobile-hint">The document will open in a new tab</p>
             </div>
-          </object>
+          </div>
         </div>
       </div>
     </section>
@@ -215,6 +227,17 @@
   </footer>
 
   <script src="../script.js"></script>
+  <script>
+    // Detect mobile device
+    (function() {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        document.getElementById('pdf-desktop-view').style.display = 'none';
+        document.getElementById('pdf-mobile-view').style.display = 'block';
+      }
+    })();
+  </script>
 
 </body>
 </html>
